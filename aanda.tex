@@ -29,6 +29,7 @@
 \usepackage{graphics}
 \usepackage{xcolor}
 \usepackage{placeins} 
+\usepackage{url}
 
 \begin{document} 
 \begin{CJK*}{UTF8}{gbsn}
@@ -39,7 +40,7 @@
           G.A. Fuller\inst{1,2},
           S. Viti\inst{3,4} \and
           B. M. Jones\inst{1}\and
-          J. Holdship \inst{3,4}
+          J. Holdship \inst{3,4} \and
           Jinjin Xie (谢津津) \inst{6}
           }
 
@@ -95,36 +96,41 @@
     Chemical composition is an important observable property of the interstellar medium (ISM) \citep{hollenbach1997dense}. It is vital to get to know the features of their distribution and physical properties of them, which is the footstone for the future study of star formation \citep{huang2017alma}. Past decades have witnessed an unprecedented improvement on both observational \citep{des2002remote,harada2019performance,meier2015alma} and theoretical astronomy \citep{subbotin1968introduction,padmanabhan2002theoretical}. Among them, physical properties probed by molecular tracers \citep{wu2005connecting} allow us to discover and explore the unknown of the ISM, where the chemical and physical modellings from the well-constrained physical parameters are of great help.
 %  \textcolor{red}{Need to restructure this somewhat.}   
 
-    UCLCHEM is a recently proposed time-dependent, gas-grain chemical model, aiming for generating chemical species through a large network of chemical reactions in user-selected physical conditions \citep{holdship2017uclchem}. It extensively includes chemical and physical modules. Widely as it can be used, the properties contained in data sets generated from it can not directly perceive through the senses. Neither is the related analysis based on its conclusions. However, in this paper, we managed to reveal the information hidden behind the complex big data in this simulation. 
+    UCLCHEM is a open source time-dependent, gas-grain chemical model, aiming for generating chemical species through a large network of chemical reactions in user-selected physical conditions \citep{holdship2017uclchem, UCLCHEM}. It includes extensive chemical and physical modules. Widely as it can be used, the properties contained in data sets generated from it can not directly perceive through the senses. Neither is the related analysis based on its conclusions. However, in this paper, we managed to reveal the information hidden behind the complex big data in this simulation. 
    
     As the study goes further, generated big data increasingly makes data processing a bottleneck for scientific research \citep{zhang2015scientific}. 
-    However, the complexity of big data also accelerates the application of data science, which is a new landscape on the way of astronomical research. It is visionary to set data explorations as the fourth paradigm in scientific research \citep{gray2005scientific}. Investigating the strategy hidden behind the data sets from simulation and observation is crucial in modern astronomical research. When conducting related research, data analysis plays a vital role in it.
+    However, the complexity of big data also accelerates the application of data science, which is a new landscape on the way of astronomical research. It is visionary to set data explorations as the fourth paradigm in scientific research \citep{gray2005scientific}. Investigating the strategy hidden behind the data sets from simulations and observations is crucial in modern astronomical research. When conducting related research, data analysis plays a vital role in it.
     
     For a long time, empirical results generated from Big data analysis continue to surprise and astound us \citep{feigelson2012big}, including but not limited to the Montage astronomy image mosaic application \citep{jacob2010montage}, the sequence alignment tool BLAST \citep{altschul1990basic}, and high energy physics histogram analysis \citep{ekanayake2008mapreduce}. 
     
-    Among them, principal component analysis (PCA) is a mainstays in the modern data analysis. It is a powerful technique for extracting a structure from potentially high-dimensional data sets \citep{kim2002face}. This eigenvector-based analysis has been maturely applied in facial recognition \citep{turk1991eigenfaces,zhang1997face} and related area. To extend its application from linear transformation to nonlinear transformation, a kernel PCA was proposed for supplementary instruction of a PCA \citep{scholkopf1998nonlinear,muller2001introduction,scholkopf1997kernel}. These scientists explore the possibility of combining denoise, line addition, and least-squares deconvolution \citep{paletou2012critical}, which have made important applications in astronomical data processing.
+    Principal component analysis (PCA) is a mainstays in the modern data analysis. It is a powerful technique for extracting a structure from potentially high-dimensional data sets \citep{kim2002face}. This eigenvector-based analysis has been maturely applied in facial recognition \citep{turk1991eigenfaces,zhang1997face} and related areas. To extend its application from linear transformation to nonlinear transformation, a kernel PCA was proposed for supplementary instruction of a PCA \citep{scholkopf1998nonlinear,muller2001introduction,scholkopf1997kernel}. These studies explore the possibility of combining denoise, line addition, and least-squares deconvolution \citep{paletou2012critical}, which have made important applications in astronomical data processing.
     
     In astronomical related fields, PCA has been regularly used in solar spectropolarimetry \citep{skumanich2002physical} during the last decades \citep{rees2000fast}. For the matter of stellar data, a PCA-based noise reduction for spectral lines was presented \citep{martinez2008pca} and subsequently performed with SOFIN spectrograph at the Nordic optical telescope \citep{herbig2003high}.
     
-    In this paper, we explore a combination of simulation modules and PCA. We make a new explanation of molecular species and their physical parameters based on the projection of molecules.
+    In this paper, we apply PCA to study of the ISM. We make a new explanation of molecular species and their physical parameters based on the projection of molecules.
 
 %--------------------------------------------------------------------
 
 \section{UCLCHEM}
 
-   Chemistry and physical conditions are inseparable in the process of star formation research. Chemistry is an essential tool in  understanding the physical conditions of the region under the research and vice versa. Models of the chemical network operating in the ISM give us important insights into the properties and evolution of the material. In an astrochemical model, ordinary differential equations (ODEs) are used to determine the change of chemical species at a given time. UCLCHEM is such a modelling code and was developed to provide a modern Fortran code and has been used in numerous publications \citep{viti2004evaporation,roberts2007desorption}.
+   %Chemistry and physical conditions are inseparable in the process of star formation research. Chemistry is an essential tool in  understanding the physical conditions of the region under the research and vice versa. Models of the chemical network operating in the ISM give us important insights into the properties and evolution of the material. In an astrochemical model, ordinary differential equations (ODEs) are used to determine the change of chemical species at a given time. UCLCHEM is such a modelling code and was developed to provide a modern Fortran code and has been used in numerous publications \citep{viti2004evaporation,roberts2007desorption}.
    
-   UCLCHEM is a gas-grain chemical code, which is designed to propagate the abundances of chemical species through a network of customized chemical reactions according to the physical conditions \citep{holdship2017uclchem}, describing gas phase reactions as well as those in ices on grain surfaces. To make it more accessible and reusable, the code is split into modules. The chemical module consists of gas phase reactions \citep{mcelroy2013umist}, freeze out model \citep{rawlings1992direct}, non-thermal desorption \citep{roberts2007desorption}, thermal desorption \citep{ayotte2001effect,burke2010ice}, and grain surface reactions \citep{hasegawa1992models,occhiogrosso2014ethylene}. The physical module mainly sets up the gas properties including the density, temperature evolution and visual extinction. Here we use two different models, to explore to very different environment,  the cloud model \citep{viti2004evaporation} and the C-shock model \citep{jimenez2008parametrization}.
-   
+   UCLCHEM is a public time-dependent gas-grain chemical code, which calculates the abundances of chemical species through a network of customized chemical reactions for a set of physical conditions which is user-defined \citep{holdship2017uclchem}. The code contains several chemical and physical module and is designed to simulate a variety of astrophysical regions, from prestellar cores to outflows, to the dense in gas in galaxies. Details of UCLCHEM can be found in \citep{holdship2017uclchem} and in \url{https://uclchem.github.io/}. 
+   %he chemical module consists of gas phase reactions \citep{mcelroy2013umist}, freeze out model \citep{rawlings1992direct}, non-thermal desorption \citep{roberts2007desorption}, thermal desorption \citep{ayotte2001effect,burke2010ice}, and grain surface reactions \citep{hasegawa1992models,occhiogrosso2014ethylene}. The physical module mainly sets up the gas properties including the density, temperature evolution and visual extinction. Here we use two different models, to explore to very different environment,  the cloud model \citep{viti2004evaporation} and the C-shock model \citep{jimenez2008parametrization}.
+  For this work we use two modules of UCLCHEM, the cloud model and the shock model. We describe both modules and how we use them in the next two subsections.  
 \subsection{Cloud model}
    
-  The cloud model is the main block among the physical modules. This model describes parcels of gas, individually in terms of their density, temperature and visual extinction from the center to the edge of the cloud. The could model runs in two phases. 
-   Phase 1 starts from a diffuse medium with elemental abundances, followed by the collapse of a cloud with the density required for the phase 2 or until the a chosen time is reached.
-   When using this model, the value of collapse parameter is set as 2, 3, 4 or 5 separately, to represent a Bonnor-Ebert sphere with overdensity factor of 1.1 \citep{aikawa2005molecular}, over-density factor of 4 \citep{aikawa2005molecular}, initially unstable magnetised filament \citep{tamaki1995effect} or an initially stable magnetised cloud \citep{fiedler1993ambipolar}, respectively. Phase 1 provides abundances that are consistent with the network, and the output of it describes the state of the gas used as initial conditions of phase 2.
+   This model describes the evolution of parcels of gas, individually in terms of their density, temperature and visual extinction from the center to the edge of the cloud. 
+   The could model runs in two phases. 
+   In phase 1, the gas starts from elemental abundance, initialized with an extremely low density and allowed to collapse until a set time or the density is reached \citep{holdship2017uclchem}.
+%   Phase 1 starts from a diffuse medium followed by the collapse up to a pre-defined gas density (which is a free parameter). 
+%   For this study, when using this module in Phase 1, the value for the the collapse parameter is set as 2, 3, 4 or 5 separately, to represent a Bonnor-Ebert sphere with overdensity factor of 1.1 \citep{aikawa2005molecular}, over-density factor of 4 \citep{aikawa2005molecular}, initially unstable magnetised filament \citep{tamaki1995effect} or an initially stable magnetised cloud \citep{fiedler1993ambipolar}, respectively. 
+   Phase 1 provides then the chemical abundances of a collapsed core which is self-consistent with the network, and can be used as the starting value for Phase 2.
    
-   In phase 2, the gas temperature, as a function of time and radial distance from the protostar, increases as the cloud collapses \citep{viti2004evaporation}. When the gas reaches the pre-determined temperatures, the major thermal desorption events should occur, re-injecting the ice mantles which have formed on the grains back into the gas phase. 
+   Phase 2 can then be used to simulate the birth of a star. 
+   In this phase， the gas temperature, as a function of time and radial distance from the protostar, increases as the cloud collapses \citep{holdship2017uclchem}. During this phase thermal desorption occur, re-injecting the ice mantles which have formed on the grains during Phase 1 back into the gas phase. 
    
-   For this work, we use a grid of cloud models covering the range of physical parameters shown in Table \ref{tab:physparam}. These models apply a restricted chemical network designed to efficiently track the major chemical constituents of the gas in a range of extragalactic environments. So complex organic species are not well presented in the models. 
+   For this work, we use a grid of cloud models covering the range of physical parameters shown in Table \ref{tab:physparam}. These models apply a restricted chemical network designed to efficiently track the major chemical constituents of the gas in a range of extragalactic environments. So complex organic species are not included in this work. 
    
     %%%%%-------TABLE OF PARAMETERS USED IN CLOUD MODEL--------------
     \begin{table}[]
@@ -149,11 +155,12 @@
    
 \subsection{C-shock model}
 
-   The C-shock model uses the shock  parameterization \citep{jimenez2008parametrization} to make the combination with UCLCHEM. This model also contains two phases: as in the cloud model, phase 1 creates a starting point for phase 2, in which the initial gas properties are completely determined and subject to a C-shock of a specified speed. 
+   We use the the C-shock module \citep{jimenez2008parametrization} in UCLCHEM to simulate the presence of shocks in Phase 2. model uses the shock  parameterization \citep{jimenez2008parametrization} to make the combination with UCLCHEM. This model also contains two phases: as in the cloud model, phase 1 creates a starting point for phase 2, in which the initial gas properties are completely determined and subject to a C-shock of a specified speed. 
    
-   The C-shock model making the chemistry can be set as the main focus and decoupled with physics, which can simplify the calculation \citep{flower2015interpreting}. A successful application of the model is the interpretation of molecules in the L1157-B1 \citep{viti2011l1157,gomez2015density,holdship2016h2s} shock. The range of physical parameters covered by the C-shocks model used \citep{jimenez2008parametrization} here are shown in Table \ref{tab:physparam-shock}.
+   %The C-shock model making the chemistry can be set as the main focus and decoupled with physics, which can simplify the calculation \citep{flower2015interpreting}. A successful application of the model is the interpretation of molecules in the L1157-B1 \citep{viti2011l1157,gomez2015density,holdship2016h2s} shock. 
+   The range of physical parameters covered by the C-shocks model used here are shown in Table \ref{tab:physparam-shock}.
    
-   In this paper, we made a selection of different molecular groups generated from UCLCHEM by the cloud model and C-shock model. Considering the abundance of the molecular species, the selected molecule includes simple molecules such as CO, CS, SIO, and HNCO and complex molecules such as CH$_3$OH, CH$_3$CCH, C$_2$H$_5$OH and so on. 
+   For this study, we make a selection of molecules whose abundances are outputted from UCLCHEM. The selected molecule includes simple molecules such as CO, CS, SIO, and HNCO and complex molecules such as CH$_3$OH, CH$_3$CCH, C$_2$H$_5$OH and so on. 
  
     %%%%%-------TABLE OF PARAMETERS USED IN C-shock MODEL--------------
     \begin{table}[]
@@ -278,16 +285,18 @@
   
   % PCA reserves all the samples and characteristics without leaking any of them. 
   PCA biplots are a popular and mature graphical method for subsequent analysis after a PCA analysis. 
-  It is a combination of loading plots and two-dimensional projection. However, in this paper, to explore the hidden properties as much as possible, we separate the biplots into two individual plots. A loading plot shows the influence of each characteristic, or molecular species has on a PC. Both the quantitative values and angular values contain specific significance which will be explained in the following section. 
+  It is a combination of loading plots and two-dimensional projection. 
+  However, in this paper, to explore the hidden properties as much as possible, we separate the biplots into two individual plots. 
+  A loading plot shows the influence of each characteristic, or molecular species has on a PC. Both the quantitative values and angular values contain specific significance which will be explained in the following section. 
   
    For the two-dimensional projection, because the first two PCs capture the majority of information, they are used to make scree plots. Also for a better optical view, the first two PCs are chosen to generate a 2-dimensional (2D) figure. The theoretical underpinnings of PCA give us a hint that the 2D plot can be explained as a compression of the original 7-dimensional data into two customized dimensions. 
  
    Until now, we can only view the clustering information through the projection figures. To reveal the underlying 
    relationship between the distribution of molecules and their physical properties, six physical properties, which are 
-   generated from UCLCHEM simulation are introduced. The flow chat of research progress is shown in the Fig. \ref{Fig1}. 
+   generated from UCLCHEM simulations, are introduced. The flow chart of the project is shown in the Fig. \ref{Fig1}. 
   
  %%%%%%------------   Figure 1------------------------ 
-  \begin{figure}[H]
+  \begin{figure}
    \centering
    \captionsetup{justification=centering}
    \includegraphics[angle=0,scale = 0.3]{flowchart-3.png}
@@ -298,37 +307,40 @@
 %-------------------RESULTS------------------------
 \section{Results}
 
+    The goal of PCA (or other dimension reduction techniques) is to identify underlying relationships between parameters. Here we are interested in identifying whether, out of the more than 100 species in the chemical networks of the UCLCHEM and C-Shock models, there are certain key groups of species which can trace the important parameters of the models. In principle, identifying such sub-groups of species could provide observers with a minimum list of species necessary to constrain the properties  of the regions they are observing.  
+
 \subsection{UCLCHEM models}
 
   Based on the simulation outputs of cloud models, three groups of relatively simple and commonly observed molecules were  selected for data analysis. The selection was also guided by the completeness of the chemical network. The corresponding results are interpreted in the following subsections. Table~\ref{tab:molegroups} summarises the groups of species analysed.
  
-
-  \begin{table*}[htbp]
-\centering
-\begin{tabular}{ccccccccc}
-\hline\hline
-Group & \multicolumn{8}{c}{Molecular Species}                         \\ \hline
-C1    & \multicolumn{8}{c}{CO, HCO$^+$, CS, SiO, HCN, NH$_3$, HNC}          \\
-C2    & \multicolumn{8}{c}{CO, HCO$^+$, CS, SiO, HCN, HNC}         \\
-C3    & \multicolumn{8}{c}{CO, HCO$^+$, CS, SiO, HCN}         \\
-S1    & \multicolumn{8}{c}{SiO, HCO$^+$, CH$_3$OH, H$_2$CS, HNCO, NH$_3$, OCS, CO} \\
-S2    & \multicolumn{8}{c}{CO, HCO$^+$, CS, SiO, HCN, NH$_3$, HNC}         \\
-S3    & \multicolumn{8}{c}{CO, HCO$^+$, CS, SiO, HCN, HNC, HNCO, CH$_3$OH, N$_2$H$^+$}      \\
-\hline\hline
-\end{tabular}
-\caption{Groups of molecules explored in the PCA analysis. C1, C2, and C3 are chemical models. S1, S2, and S3 are C-shock models.}
-\label{tab:molegroups}
-\end{table*}
+%%%%%%%%%%%------------- TAB: cloud and shock models -----------------------------
+    \begin{table*}[htbp]
+        \centering
+        \begin{tabular}{ccccccccc}
+        \hline\hline
+        Group & \multicolumn{8}{c}{Molecular Species}                         \\ \hline
+        C1    & \multicolumn{8}{c}{CO, HCO$^+$, CS, SiO, HCN, NH$_3$, HNC}          \\
+        C2    & \multicolumn{8}{c}{CO, HCO$^+$, CS, SiO, HCN, HNC}         \\
+        C3    & \multicolumn{8}{c}{CO, HCO$^+$, CS, SiO, HCN}         \\
+        S1    & \multicolumn{8}{c}{SiO, HCO$^+$, CH$_3$OH, H$_2$CS, HNCO, NH$_3$, OCS, CO} \\
+        S2    & \multicolumn{8}{c}{CO, HCO$^+$, CS, SiO, HCN, NH$_3$, HNC}         \\
+        S3    & \multicolumn{8}{c}{CO, HCO$^+$, CS, SiO, HCN, HNC, HNCO, CH$_3$OH, N$_2$H$^+$}      \\
+        \hline\hline
+        \end{tabular}
+        \caption{Groups of molecules explored in the PCA analysis. C1, C2, and C3 are chemical models. S1, S2, and S3 are C-shock models.}
+        \label{tab:molegroups}
+    \end{table*}
 
   
   
 \subsubsection{Group C1 (CO, HCO$^+$, CS, SiO, HCN, NH$_3$, and HNC)}
    
-  The results of simulation generate more than two hundred molecules, in the Gourp C1, only seven of them: 
-  CO, HCO$^+$, CS, SiO, HCN, NH$_3$ and HNC, are selected. 
-  There are three considerations when selecting the group of molecues.  
-  Firstly, those molecules are based on producing a large suite of models analysed here, a reduced chemical network was used which focused on the evolution of simple species \citep{holdship2017uclchem}. 
-  Secondly, these molecules are commonly observed in observations. 
+  In this section, a statistical and graphical presentation of the quantified significance of the selected molecules on each principal component will be shown. 
+  The simulations generate more than two hundred molecules; in the Group C1, only seven of them - 
+  CO, HCO$^+$, CS, SiO, HCN, NH$_3$ and HNC - are selected. 
+  There are three considerations when selecting the group of molecules.  
+  Firstly, the selection of those molecules are based on producing a large suite of models analysed here, a reduced chemical network was used which focused on the evolution of simple species \citep{holdship2017uclchem}, which is sufficient for subsequent studies \citep{schmalzl2014water}.
+  Secondly, these molecules are commonly observed. 
   Thirdly, considering the molecular fractions, those seven molecules are the most abundant of the simple molecular species. 
   After the selection progress has been done, the data can be viewed as a $200000\times7$ matrix. 
   Besides, we also take the numerical uncertainty into consideration. 
@@ -336,37 +348,34 @@ S3    & \multicolumn{8}{c}{CO, HCO$^+$, CS, SiO, HCN, HNC, HNCO, CH$_3$OH, N$_2$
   Below this value, the abundances are unreliable due to numerical noise. 
   After the filtering progress has been done, the data can be viewed as a $150283\times7$ matrix.  
   
-  In this section, we describe the results of the PCA analysis of Group C1, consisting of seven frequently observed and common species: CO, HCO$^+$, CS, SiO, HCN, NH$_3$, and HNC. 
   Fig. \ref{Fig-cloud-7-variance} and Table \ref{table-7-eigenvalue} shows the individual and cumulative explained variance of the seven principal components (PCs). The first three PCs are the most significant components, representing $85.3\%$ of the total variance, the individual explained variance ratios of them is PC1: $50.3\%$, PC2: $19.9\%$ and PC3: $15.0\%$.
   
-  %%%%%%------------   Figure ------------------------ 
-  \begin{figure}[htbp]
-   \centering
-   \captionsetup{justification=centering}
-   \includegraphics[angle=0,scale = 0.6]{7/explained_variance_ratio.png}
-   \caption{Individual and cumulative explained variance of PCs among Group C1 (CO, HCO$^+$, CS, SiO, HCN, NH$_3$, and HNC)}
-         \label{Fig-cloud-7-variance}
-   \end{figure}
+%%%%%%%%%%%------------ FIG: cloud model 7 molecules: explained variance ratio --------------
+     \begin{figure}[htbp]
+       \centering
+       \captionsetup{justification=centering}
+       \includegraphics[angle=0,scale = 0.6]{7/explained_variance_ratio.png}
+       \caption{Individual and cumulative explained variance of PCs among Group C1 (CO, HCO$^+$, CS, SiO, HCN, NH$_3$, and HNC)}
+             \label{Fig-cloud-7-variance}
+      \end{figure}
    
-%%--------------    Table 1 ----------------------
-
-
-\begin{table*}[htbp]
-\centering
-\begin{tabular}{ccc}
-\hline\hline
-\multicolumn{1}{l}{Pincipal Components} & \multicolumn{1}{l}{Explained Ratio} & Cumulative Variance \\ \hline
-PC1                                     & 0.503                               & 0.503               \\
-PC2                                     & 0.199                               & 0.702               \\
-PC3                                     & 0.150                               & 0.852               \\
-PC4                                     & 0.083                               & 0.936               \\
-PC5                                     & 0.045                               & 0.980               \\
-PC6                                     & 0.012                               & 0.992               \\
-PC7                                     & 0.008                               & 1.000   \\           \hline\hline
-\end{tabular}
-\caption{Table of individual and cumulative explained variance of PCs among seven molecules in Group C1 (CO, HCO$^+$, CS, SiO, HCN, NH$_3$, and HNC).}
-\label{table-cloud-1}
-\end{table*}
+%%%%%%%%%%%------------- TAB: cloud model 7 molecules: variance -----------------------------
+     \begin{table*}[htbp]
+        \centering
+        \begin{tabular}{ccc}
+        \hline\hline
+        \multicolumn{1}{l}{Principal Components} & \multicolumn{1}{l}{Explained Ratio} & Cumulative Variance \\ \hline
+        PC1                                     & 0.503                               & 0.503               \\
+        PC2                                     & 0.199                               & 0.702               \\
+        PC3                                     & 0.150                               & 0.852               \\
+        PC4                                     & 0.083                               & 0.936               \\
+        PC5                                     & 0.045                               & 0.980               \\
+        PC6                                     & 0.012                               & 0.992               \\
+        PC7                                     & 0.008                               & 1.000   \\           \hline\hline
+        \end{tabular}
+        \caption{Table of individual and cumulative explained variance of PCs among seven molecules in Group C1 (CO, HCO$^+$, CS, SiO, HCN, NH$_3$, and HNC).}
+        \label{table-cloud-1}
+     \end{table*}
    
    PCs and their eigenvalues quantify the significance of gradients in the data. 
    As listed in Table~\ref{table-7-eigenvalue}, in the direction of PC1, the eigenvalues of seven molecules are all negative, the most influential four of them are CO(-0.511), HNC(-0.495), HCN(-0.466), and NH$_3$(-0.457).
@@ -379,24 +388,24 @@ PC7                                     & 0.008                               & 
 
 
 
-%%%%% -----------table------------
-\begin{table*}[htbp]
-\centering
-\begin{tabular}{cccccccc}
-\hline\hline
-\multirow{2}{*}{Molecular Species} & \multicolumn{7}{c}{Principal Components}                 \\ \cline{2-8} 
-                                   & 1       & 2       & 3       & 4       & 5      & 6    & 7\\ \hline
-CO                                  & -0.511 & -0.100 & 0.072  & -0.142 & -0.096 & 0.487  & 0.675  \\ \hline
-HCO$^+$                               & -0.001 & 0.728  & 0.118  & -0.620 & 0.264  & -0.006 & 0.007  \\ \hline
-CS                                 & -0.249 & -0.598 & 0.138  & -0.659 & 0.038   & -0.253 & -0.243 \\ \hline
-SiO                                & -0.059 & -0.001 & 0.944   & 0.259  & 0.187  & -0.028 & -0.044 \\ \hline
-HCN                                & -0.466 & 0.257  & 0.060    & 0.044  & -0.610 & 0.202   & -0.545 \\ \hline
-NH3                                & -0.457 & -0.024 & -0.241 & 0.223  & 0.714  & 0.231  & -0.343 \\ \hline
-HNC                                & -0.495 & 0.185  & -0.092 & 0.200  & -0.027 & -0.776 & 0.260 \\ \hline\hline
-\end{tabular}
-\caption{Eigenvalues of the PCA for the seven molecules in Group C1 (CO, HCO$^+$, CS, SiO, HCN, NH$_3$, and HNC).}
-\label{table-7-eigenvalue}
-\end{table*}
+%%%%%%%%%%%------------- TAB: cloud model 7 molecules: eigenvalues ---------------------------
+     \begin{table*}[htbp]
+        \centering
+        \begin{tabular}{cccccccc}
+        \hline\hline
+        \multirow{2}{*}{Molecular Species} & \multicolumn{7}{c}{Principal Components}                 \\ \cline{2-8} 
+                                           & 1       & 2       & 3       & 4       & 5      & 6    & 7\\ \hline
+        CO                                  & -0.511 & -0.100 & 0.072  & -0.142 & -0.096 & 0.487  & 0.675  \\ \hline
+        HCO$^+$                               & -0.001 & 0.728  & 0.118  & -0.620 & 0.264  & -0.006 & 0.007  \\ \hline
+        CS                                 & -0.249 & -0.598 & 0.138  & -0.659 & 0.038   & -0.253 & -0.243 \\ \hline
+        SiO                                & -0.059 & -0.001 & 0.944   & 0.259  & 0.187  & -0.028 & -0.044 \\ \hline
+        HCN                                & -0.466 & 0.257  & 0.060    & 0.044  & -0.610 & 0.202   & -0.545 \\ \hline
+        NH3                                & -0.457 & -0.024 & -0.241 & 0.223  & 0.714  & 0.231  & -0.343 \\ \hline
+        HNC                                & -0.495 & 0.185  & -0.092 & 0.200  & -0.027 & -0.776 & 0.260 \\ \hline\hline
+        \end{tabular}
+        \caption{Eigenvalues of the PCA for the seven molecules in Group C1 (CO, HCO$^+$, CS, SiO, HCN, NH$_3$, and HNC).}
+        \label{table-7-eigenvalue}
+    \end{table*}
    
    The loading plots in Fig. \ref{Fig-7-loading} provide an intuitive way to illustrate the eigenvalues of PCs. 
    Since the top three PCs are the most significant, they are selected to generate loading plots. 
@@ -409,18 +418,18 @@ HNC                                & -0.495 & 0.185  & -0.092 & 0.200  & -0.027 
    In Fig. \ref{Fig-7-loading-23}, it is remarkable that the obtuse angle between CS and HCO$^+$ shows they are negatively correlated.
    
    
-      %%%------------Figure 3-----
-\begin{figure}[htbp]
-\centering  
-\subfigure[Plane of PC1 and PC2]{
-\label{Fig-7-loading-12}
-\includegraphics[width=0.5\textwidth]{7/loadingplot_PC1&2.png}}
-\subfigure[Plane of PC2 and PC3]{
-\label{Fig-7-loading-23}
-\includegraphics[width=0.5\textwidth]{7/loadingplot_PC2&3.png}}
-\caption{Loading plots for the seven molecules in Group C1 (CO, HCO$^+$, CS, SiO, HCN, NH$_3$, and HNC).}
-\label{Fig-7-loading}
-\end{figure}
+%%%%%%%%%%%------------- FIG: cloud model 7 molecules: loading plots -----------------------
+    \begin{figure}[htbp]
+        \centering  
+        \subfigure[Plane of PC1 and PC2]{
+        \label{Fig-7-loading-12}
+        \includegraphics[width=0.5\textwidth]{7/loadingplot_PC1&2.png}}
+        \subfigure[Plane of PC2 and PC3]{
+        \label{Fig-7-loading-23}
+        \includegraphics[width=0.5\textwidth]{7/loadingplot_PC2&3.png}}
+        \caption{Loading plots for the seven molecules in Group C1 (CO, HCO$^+$, CS, SiO, HCN, NH$_3$, and HNC).}
+        \label{Fig-7-loading}
+    \end{figure}
 
    
     Fig. \ref{C1-12}, Fig. \ref{C1-23}, and Fig. \ref{C1-34} show the projection of a full sample of UCLCHEM models onto planes of the principal component vectors derived from the Group C1 species. 
@@ -434,124 +443,133 @@ HNC                                & -0.495 & 0.185  & -0.092 & 0.200  & -0.027 
     Fig. \ref{C1-12-metallicity} shows that the physical parameter metallicity has a decreasing trend along the PC1. 
     Moreover, Fig. \ref{C1-23-av} and Fig. \ref{C1-34-av} indicate that the physical parameter A\textsubscript{V} goes up in the direction of PC3.
     While the physical parameter initial density shows a decreasing trend along the direction of PC3, as shown in Fig. \ref{C1-23-initialdens} and Fig. \ref{C1-34-initialdens}. 
-    Table \ref{table-7-all} shows these trends, where the negative sign demonstrates decreasing trend, and the positive sign indicates an increasing trend. 
-    %%5-----------------------
- \begin{figure*}[htbp]
-\centering
-\subfigure{
-\label{C1-12-av}
-\includegraphics[width=5.9cm]{7/PC1&2_av.png}
-}
-\subfigure{
-\label{C1-12-initialdens}
-\includegraphics[width=5.9cm]{7/PC1&2_initialDens.png}
-}
-\subfigure{
-\label{C1-12-maxtemp}
-\includegraphics[width=5.9cm]{7/PC1&2_maxTemp.png}
-} \\
-\subfigure{
-\label{C1-12-metallicity}
-\includegraphics[width=5.9cm]{7/PC1&2_metallicity.png}
-}
-\subfigure{
-\label{C1-12-radfield}
-\includegraphics[width=5.9cm]{7/PC1&2_radfield.png}
-}
-\subfigure{
-\label{C1-12-zeta}
-\includegraphics[width=5.9cm]{7/PC1&2_zeta.png}
-}
-\caption{Projection of Group C1 (CO, HCO$^+$, CS, SiO, HCN, NH$_3$, and HNC) on the plane of PC1 and PC2. Three panels on the top row are A\textsubscript{V}, initial densities and maximum temperature, while the three panels on the bottom row are metallicity, rad field and zeta, respectively. Among them, only the projection of maximum temperature and metallicity shows a clear trend.}
-\label{C1-12}
- \end{figure*}
-%%%%---------------
- \begin{figure*}[htbp]
-\centering
-\subfigure{
-\label{C1-23-av}
-\includegraphics[width=5.9cm]{7/PC2&3_av.png}
-}
-\subfigure{
-\label{C1-23-initialdens}
-\includegraphics[width=5.9cm]{7/PC2&3_initialDens.png}
-}
-\subfigure{
-\label{C1-23-maxtemp}
-\includegraphics[width=5.9cm]{7/PC2&3_maxTemp.png}
-}
-\subfigure{
-\label{C1-23-metallicity}
-\includegraphics[width=5.9cm]{7/PC2&3_metallicity.png}
-}
-\subfigure{
-\label{C1-23-radfield}
-\includegraphics[width=5.9cm]{7/PC2&3_radfield.png}
-}
-\subfigure{
-\label{C1-23-zeta}
-\includegraphics[width=5.9cm]{7/PC2&3_zeta.png}
-}
-\caption{Projection of Group C1 (CO, HCO$^+$, CS, SiO, HCN, NH$_3$, and HNC) on the plane of PC2 and PC3. Three panels on the top row are A\textsubscript{V}, initial densities and maximum temperature, while the three panels on the bottom row are metallicity, rad field and zeta, respectively. Among them, only the projection of maximum temperature and A\textsubscript{V} shows a clear trend.}
-\label{C1-23}
- \end{figure*}
+    Table \ref{table-7-all} shows these trends, where the negative sign demonstrates decreasing trend, and the positive sign indicates an increasing trend.
+    
+%%%%%%%%%%%------------- FIG: cloud model 7 molecules: Projection_PC1&2 -----------------------
+     \begin{figure*}[htbp]
+        \centering
+        \subfigure[]{
+        \label{C1-12-av}
+        \includegraphics[scale = 0.27]{7/PC1&2_av.png}
+        }
+        \subfigure[]{
+        \label{C1-12-initialdens}
+        \includegraphics[scale = 0.27]{7/PC1&2_initialDens.png}
+        }
+        
+        \vspace{-8mm}
+
+        
+        \subfigure[]{
+        \label{C1-12-maxtemp}
+        \includegraphics[scale = 0.27]{7/PC1&2_maxTemp.png}
+        }
+        \subfigure[]{
+        \label{C1-12-metallicity}
+        \includegraphics[scale = 0.27]{7/PC1&2_metallicity.png}
+        }
+        \vspace{-8mm}
+        \\
+        \subfigure[]{
+        \label{C1-12-radfield}
+        \includegraphics[scale = 0.27]{7/PC1&2_radfield.png}
+        }
+        \subfigure[]{
+        \label{C1-12-zeta}
+        \includegraphics[scale = 0.27]{7/PC1&2_zeta.png}
+        }
+        \caption{Projection of Group C1 (CO, HCO$^+$, CS, SiO, HCN, NH$_3$, and HNC) on the plane of PC1 and PC2. Two panels on the top row are A\textsubscript{V} and initial densities. In the second row, there are maximum temperature and metallicity, while the two panels on the bottom row are rad field and zeta, respectively. Among them, only the projection of maximum temperature and metallicity shows a clear trend.}
+        \label{C1-12}
+    \end{figure*}
  
- %%%%----------------
-\begin{figure*}[htbp]
-\centering
-\subfigure{
-\label{C1-34-av}
-\includegraphics[width=5.9cm]{7/PC3&4_av.png}
-}
-\subfigure{
-\label{C1-34-initialdens}
-\includegraphics[width=5.9cm]{7/PC3&4_initialDens.png}
-}
-\subfigure{
-\label{C1-34-maxtemp}
-\includegraphics[width=5.9cm]{7/PC3&4_maxTemp.png}
-} \\
-\subfigure{
-\label{C1-34-metallicity}
-\includegraphics[width=5.9cm]{7/PC3&4_metallicity.png}
-}
-\subfigure{
-\label{C1-34-radfield}
-\includegraphics[width=5.9cm]{7/PC3&4_radfield.png}
-}
-\subfigure{
-\label{C1-34-zeta}
-\includegraphics[width=5.9cm]{7/PC3&4_zeta.png}
-}
-\caption{Projection of Group C1 (CO, HCO$^+$, CS, SiO, HCN, NH$_3$, and HNC) on the plane of PC3 and PC4. Three panels on the top row are A\textsubscript{V}, initial densities and maximum temperature, while the three panels on the bottom row are metallicity, rad field and zeta, respectively. Among them, only the projection of initial densities and A\textsubscript{V} shows a clear trend.}
-\label{C1-34}
-\end{figure*}
+%%%%%%%%%%%------------- FIG: cloud model 7 molecules: Projection_PC2&3 -----------------------
+     \begin{figure*}[htbp]
+        \centering
+        \subfigure[]{
+        \label{C1-23-av}
+        \includegraphics[scale = 0.27]{7/PC2&3_av.png}
+        }
+        \subfigure[]{
+        \label{C1-23-initialdens}
+        \includegraphics[scale = 0.27]{7/PC2&3_initialDens.png}
+        }
+        \vspace{-8mm}
+        \\
+        \subfigure[]{
+        \label{C1-23-maxtemp}
+        \includegraphics[scale = 0.27]{7/PC2&3_maxTemp.png}
+        }
+        \subfigure[]{
+        \label{C1-23-metallicity}
+        \includegraphics[scale = 0.27]{7/PC2&3_metallicity.png}
+        }
+        \vspace{-8mm}
+        \\
+        \subfigure[]{
+        \label{C1-23-radfield}
+        \includegraphics[scale = 0.27]{7/PC2&3_radfield.png}
+        }
+        \subfigure[]{
+        \label{C1-23-zeta}
+        \includegraphics[scale = 0.27]{7/PC2&3_zeta.png}
+        }
+        \caption{Projection of Group C1 (CO, HCO$^+$, CS, SiO, HCN, NH$_3$, and HNC) on the plane of PC2 and PC3. Two panels on the top row are A\textsubscript{V} and initial densities. In the second row, there are maximum temperature and metallicity, while the two panels on the bottom row are rad field and zeta, respectively. Among them, only the projection of maximum temperature and A\textsubscript{V} shows a clear trend.}
+        \label{C1-23}
+    \end{figure*}
+ 
+%%%%%%%%%%%------------- FIG: cloud model 7 molecules: Projection_PC3&4 -----------------------
+     \begin{figure*}[htbp]
+        \centering
+        \subfigure[]{
+        \label{C1-34-av}
+        \includegraphics[scale = 0.27]{7/PC3&4_av.png}
+        }
+        \subfigure[]{
+        \label{C1-34-initialdens}
+        \includegraphics[scale = 0.27]{7/PC3&4_initialDens.png}
+        }
+        \vspace{-8mm}
+        \\
+        \subfigure[]{
+        \label{C1-34-maxtemp}
+        \includegraphics[scale = 0.27]{7/PC3&4_maxTemp.png}
+        } 
+        \subfigure[]{
+        \label{C1-34-metallicity}
+        \includegraphics[scale = 0.27]{7/PC3&4_metallicity.png}
+        }
+        \vspace{-8mm}
+        \\
+        \subfigure[]{
+        \label{C1-34-radfield}
+        \includegraphics[scale = 0.27]{7/PC3&4_radfield.png}
+        }
+        \subfigure[]{
+        \label{C1-34-zeta}
+        \includegraphics[scale = 0.27]{7/PC3&4_zeta.png}
+        }
+        \caption{Projection of Group C1 (CO, HCO$^+$, CS, SiO, HCN, NH$_3$, and HNC) on the plane of PC3 and PC4. Two panels on the top row are A\textsubscript{V} and initial densities. In the second row, there are maximum temperature and metallicity, while the two panels on the bottom row are rad field and zeta, respectively. Among them, only the projection of initial densities and A\textsubscript{V} shows a clear trend.}
+        \label{C1-34}
+     \end{figure*}
+
+%%%%%%%%%%%------------- TAB: cloud model 7 molecules trend -----------------------------------
+    \begin{table*}[htbp]
+        \centering
+        \begin{tabular}{ccccc}
+        \hline\hline
+        \multirow{2}{*}{Principal Components} & \multicolumn{4}{c}{Physical Parameters}  \\ \cline{2-5} 
+                                              & \begin{tabular}[c]{@{}c@{}}maximum \\ temperture\end{tabular} & \multicolumn{1}{l}{metallicity} & \multicolumn{1}{l}{A\textsubscript{V}} & \begin{tabular}[c]{@{}c@{}}initial\\ densities\end{tabular} \\ \hline
+        PC1 &  & -  & &  \\ \hline
+        PC2 & + & & &  \\ \hline
+        PC3 &   &   & +   & -   \\ \hline\hline
+        \end{tabular}
+        \caption{Changing trend of physical parameters on top three \\PCs among Group C1 (CO, HCO$^+$, CS, SiO, HCN, NH$_3$, and HNC).}
+        \label{table-7-all}
+    \end{table*}
 
   
   
 
-   
-   
-   
-      %%%%%---------------Table 3------------------------------
-
-\begin{table*}[htbp]
-\centering
-\begin{tabular}{ccccc}
-\hline\hline
-\multirow{2}{*}{Principal Components} & \multicolumn{4}{c}{Physical Parameters}  \\ \cline{2-5} 
-                                      & \begin{tabular}[c]{@{}c@{}}maximum \\ temperture\end{tabular} & \multicolumn{1}{l}{metallicity} & \multicolumn{1}{l}{A\textsubscript{V}} & \begin{tabular}[c]{@{}c@{}}initial\\ densities\end{tabular} \\ \hline
-PC1 &  & -  & &  \\ \hline
-PC2 & + & & &  \\ \hline
-PC3 &   &   & +   & -   \\ \hline\hline
-\end{tabular}
-\caption{Changing trend of physical parameters on top three \\PCs among Group C1 (CO, HCO$^+$, CS, SiO, HCN, NH$_3$, and HNC).}
-\label{table-7-all}
-\end{table*}
-  
-  
-   
-   
 \subsubsection{Group C2 (CO, HCO$^+$, CS, SiO, HCN, and HNC)}
 
   In this section, as NH$_3$ has been dropped, the subgroup of six molecules (CO, HCO$^+$, CS, SiO, HCN, and HNC) can be obtained to get to know the influence of NH$_3$ having on the whole group of molecules.
@@ -561,71 +579,69 @@ PC3 &   &   & +   & -   \\ \hline\hline
   Top three PCs consists of $87.4\%$ of the total variance: PC1 is $47.7\%$, PC2 is $23.3\%$, and PC3 is $16.5\%$. 
   
   
-   %%%%%%------------   Figure 13------------------------ 
-  \begin{figure}[htbp]
-   \centering
-   \captionsetup{justification=centering}
-   \includegraphics[angle=0,scale = 0.6]{6/explained_variance_ratio.png}
-   \caption{Individual and cumulative explained variance of PCs among Group C2 (CO, HCO$^+$, CS, SiO, HCN, and HNC).}
-         \label{Fig13}
-   \end{figure}
+%%%%%%%%%%%------------ FIG: cloud model 6 molecules: explained variance ratio -------------
+    \begin{figure}[htbp]
+       \centering
+       \captionsetup{justification=centering}
+       \includegraphics[angle=0,scale = 0.6]{6/explained_variance_ratio.png}
+       \caption{Individual and cumulative explained variance of PCs among Group C2 (CO, HCO$^+$, CS, SiO, HCN, and HNC).}
+       \label{Fig13}
+    \end{figure}
    
    
-   %%%%%%%------------- Table 4-----------------
-
-\begin{table*}[htbp]
-\centering
-\begin{tabular}{ccc}
-\hline\hline
-\multicolumn{1}{l}{Pincipal Components} & \multicolumn{1}{l}{Explained Ratio} & Cumulative Variance \\ \hline
-        PC1 & 0.477  & 0.477\\ 
-        PC2 & 0.232  & 0.709\\
-        PC3 & 0.165  & 0.874\\
-        PC4 & 0.092  & 0.966\\ 
-        PC5 & 0.021  & 0.987\\
-        PC6 & 0.013  & 1.000\\ \hline\hline
-\end{tabular}
-\caption{Table of individual and cumulative explained variance of PCs among Group C2 (CO, HCO$^+$, CS, SiO, HCN, and HNC).}
-\label{table-6-variance}
-\end{table*}
+%%%%%%%%%%%------------- TAB: cloud model 6 molecules: variance ----------------------------
+    \begin{table*}[htbp]
+        \centering
+        \begin{tabular}{ccc}
+        \hline\hline
+        \multicolumn{1}{l}{Pincipal Components} & \multicolumn{1}{l}{Explained Ratio} & Cumulative Variance \\ \hline
+                PC1 & 0.477  & 0.477\\ 
+                PC2 & 0.232  & 0.709\\
+                PC3 & 0.165  & 0.874\\
+                PC4 & 0.092  & 0.966\\ 
+                PC5 & 0.021  & 0.987\\
+                PC6 & 0.013  & 1.000\\ \hline\hline
+        \end{tabular}
+        \caption{Table of individual and cumulative explained variance of PCs among Group C2 (CO, HCO$^+$, CS, SiO, HCN, and HNC).}
+        \label{table-6-variance}
+    \end{table*}
 
   Fig. \ref{Fig-6-load-12}, Fig. \ref{Fig-6-load-23} and Table \ref{table-6-eigen} indicate the eigenvalues of molecular species having on PCs. On PC1, the molecule CO, HCN, and HNC contribute mostly, but are not that influential on PC2, where the HCO$^+$ and CS are the more significant ones. 
   On PC3, however, the SiO is the most crucial molecule, possessing an eigenvalue of 0.944. 
   Compared with the previous section, the same phenomenon can be also observed among seven molecules without dropping NH$_3$. 
   
  
-
-%%%%%%%%%%---------------Table 5 -----------------
-\begin{table*}[htp]
-\centering
-\begin{tabular}{ccccccc}
-\hline\hline
-\multirow{2}{*}{Molecular Species} & \multicolumn{6}{c}{Principal Components}                 \\ \cline{2-7} 
-                                   & 1       & 2       & 3       & 4       & 5      & 6       \\ \hline
-CO                                 & -0.570 & -0.112 & -0.024 & -0.084 & 0.00 & 0.808  \\ \hline
-HCO$^+$                               & -0.021 & 0.725  & 0.109  & -0.673 & 0.087  & 0.018  \\ \hline
-CS                                 & -0.290 & -0.607 & 0.043  & -0.646 & 0.012 & -0.355 \\ \hline
-SiO                                & -0.110 & -0.016 & 0.979  & 0.152  & 0.066  & -0.035 \\ \hline
-HCN                                & -0.537 & 0.244  & -0.046 & 0.171  & -0.718 & -0.322 \\ \hline
-HNC                                & -0.537 & 0.178  & -0.157 & 0.262  & 0.687 & -0.337 \\ \hline\hline
-\end{tabular}
-\caption{Eigenvalues of PCA among Group C2 (CO, HCO$^+$, CS, SiO, HCN, and HNC)}
-\label{table-6-eigen}
-\end{table*}
+%%%%%%%%%%%------------- TAB: cloud model 6 molecules: eigenvalues --------------------------
+    \begin{table*}[htp]
+        \centering
+        \begin{tabular}{ccccccc}
+        \hline\hline
+        \multirow{2}{*}{Molecular Species} & \multicolumn{6}{c}{Principal Components}                 \\ \cline{2-7} 
+                                           & 1       & 2       & 3       & 4       & 5      & 6       \\ \hline
+        CO                                 & -0.570 & -0.112 & -0.024 & -0.084 & 0.00 & 0.808  \\ \hline
+        HCO$^+$                               & -0.021 & 0.725  & 0.109  & -0.673 & 0.087  & 0.018  \\ \hline
+        CS                                 & -0.290 & -0.607 & 0.043  & -0.646 & 0.012 & -0.355 \\ \hline
+        SiO                                & -0.110 & -0.016 & 0.979  & 0.152  & 0.066  & -0.035 \\ \hline
+        HCN                                & -0.537 & 0.244  & -0.046 & 0.171  & -0.718 & -0.322 \\ \hline
+        HNC                                & -0.537 & 0.178  & -0.157 & 0.262  & 0.687 & -0.337 \\ \hline\hline
+        \end{tabular}
+        \caption{Eigenvalues of PCA among Group C2 (CO, HCO$^+$, CS, SiO, HCN, and HNC)}
+        \label{table-6-eigen}
+    \end{table*}
    
 
-  %%%%-------------Figure ------------------------------------------------
-      \begin{figure}[htbp]
-\centering  
-\subfigure[Plane of PC1 and PC2]{
-\label{Fig-6-load-12}
-\includegraphics[width=0.5\textwidth]{6/loadingplot_PC1&2.png}}
-\subfigure[Plane of PC2 and PC3]{
-\label{Fig-6-load-23}
-\includegraphics[width=0.5\textwidth]{6/loadingplot_PC2&3.png}}
-\caption{Loading plots of Group C2 (CO, HCO$^+$, CS, SiO, HCN, and HNC)}
-\label{Fig-6-load}
-\end{figure}
+%%%%%%%%%%%------------- FIG: cloud model 6 molecules loading plots -------------------------
+     \begin{figure}[htbp]
+        \centering  
+        \subfigure[Plane of PC1 and PC2]{
+        \label{Fig-6-load-12}
+        \includegraphics[width=0.5\textwidth]{6/loadingplot_PC1&2.png}}
+        \subfigure[Plane of PC2 and PC3]{
+        \label{Fig-6-load-23}
+        \includegraphics[width=0.5\textwidth]{6/loadingplot_PC2&3.png}}
+        \caption{Loading plots of Group C2 (CO, HCO$^+$, CS, SiO, HCN, and HNC)}
+        \label{Fig-6-load}
+    \end{figure}
    
    On the view of the projections of PCs, Fig. \ref{C2-12-maxtemp} and Fig. \ref{C2-23-maxtemp} indicate that the physical parameter maximum temperature contains an increasing trend along PC2. 
    Similarly, Fig. \ref{C2-23-av} and \ref{C2-34-av} shows that the physical parameter A\textsubscript{V} also has an upward tendency along the direction of PC3. 
@@ -633,77 +649,78 @@ HNC                                & -0.537 & 0.178  & -0.157 & 0.262  & 0.687 &
    The same correspondence can be also found on Group C1. 
    Table \ref{table-6-all} records all of the obvious trends, where the positive and negative sign demonstrates the increasing and decreasing trend respectively. 
    
- %%%%----------------
-\begin{figure*}[htbp]
-\centering
-\subfigure{
-\label{C2-12-maxtemp}
-\includegraphics[width=5.9cm]{6/PC1&2_maxTemp.png}
-}
-\subfigure{
-\label{C2-12-metallicity}
-\includegraphics[width=5.9cm]{6/PC1&2_metallicity.png}
-}
-\caption{Projection of Group C2 (CO, HCO$^+$, CS, SiO, HCN, and HNC) on the plane of PC1 and PC2. The first panel is the maximum temperature, while the second panel demonstrates the metallicity.}
-\label{C2-12}
-\end{figure*}
+%%%%%%%%%%%------------- FIG: cloud model 6 molecules: Projection_PC1&2 ------------------------
+    \begin{figure*}[htbp]
+        \centering
+        \subfigure[]{
+        \label{C2-12-maxtemp}
+        \includegraphics[scale = 0.27]{6/PC1&2_maxTemp.png}
+        }
+        % \hspace{-17mm}
+        \subfigure[]{
+        \label{C2-12-metallicity}
+        \includegraphics[scale = 0.27]{6/PC1&2_metallicity.png}
+        }
+        \caption{Projection of Group C2 (CO, HCO$^+$, CS, SiO, HCN, and HNC) on the plane of PC1 and PC2. The first panel is the maximum temperature, while the second panel demonstrates the metallicity.}
+        \label{C2-12}
+    \end{figure*}
 
- %%%%----------------------------------
-\begin{figure*}[htbp]
-\centering
-\subfigure{
-\label{C2-23-maxtemp}
-\includegraphics[width=5.9cm]{6/PC2&3_maxTemp.png}
-} 
-\subfigure{
-\label{C2-23-metallicity}
-\includegraphics[width=5.9cm]{6/PC2&3_metallicity.png}
-}
-\\
-\subfigure{
-\label{C2-23-av}
-\includegraphics[width=5.9cm]{6/PC2&3_av.png}
-}
-\subfigure{
-\label{C2-23-initialdens}
-\includegraphics[width=5.9cm]{6/PC2&3_initialDens.png}
-}
-\caption{Projection of Group C2 (CO, HCO$^+$, CS, SiO, HCN, and HNC) on the plane of PC2 and PC3. The top row: max temperature and metallicity. The bottom row: A\textsubscript{V} and initial densities.}
-\label{C2-23}
-\end{figure*}
+%%%%%%%%%%%------------- FIG: cloud model 6 molecules: Projection_PC2&3 ------------------------
+    \begin{figure*}[htbp]
+        \centering
+        \subfigure[]{
+        \label{C2-23-maxtemp}
+        \includegraphics[scale = 0.27]{6/PC2&3_maxTemp.png}
+        } 
+        \subfigure[]{
+        \label{C2-23-metallicity}
+        \includegraphics[scale = 0.27]{6/PC2&3_metallicity.png}
+        }
+        \vspace{-8mm}
+        \\
+        \subfigure[]{
+        \label{C2-23-av}
+        \includegraphics[scale = 0.27]{6/PC2&3_av.png}
+        }
+        \subfigure[]{
+        \label{C2-23-initialdens}
+        \includegraphics[scale = 0.27]{6/PC2&3_initialDens.png}
+        }
+        \caption{Projection of Group C2 (CO, HCO$^+$, CS, SiO, HCN, and HNC) on the plane of PC2 and PC3. The top row: max temperature and metallicity. The bottom row: A\textsubscript{V} and initial densities.}
+        \label{C2-23}
+    \end{figure*}
    
- %%%%-----------------------------------
-\begin{figure*}[htbp]
-\centering
-\subfigure{
-\label{C2-34-av}
-\includegraphics[width=5.9cm]{6/PC3&4_av.png}
-}
-\subfigure{
-\label{C2-34-initialdens}
-\includegraphics[width=5.9cm]{6/PC3&4_initialDens.png}
-}
-\caption{Projection of Group C2 (CO, HCO$^+$, CS, SiO, HCN, and HNC) on the plane of PC3 and PC4, demonstrating A\textsubscript{V} and initial densities respectively.}
-\label{C2-34}
-\end{figure*}
+%%%%%%%%%%%------------- FIG: cloud model 6 molecules: Projection_PC3&4 ------------------------
+    \begin{figure*}[htbp]
+        \centering
+        \subfigure[]{
+        \label{C2-34-av}
+        \includegraphics[scale = 0.27]{6/PC3&4_av.png}
+        }
+        \subfigure[]{
+        \label{C2-34-initialdens}
+        \includegraphics[scale = 0.27]{6/PC3&4_initialDens.png}
+        }
+        \caption{Projection of Group C2 (CO, HCO$^+$, CS, SiO, HCN, and HNC) on the plane of PC3 and PC4, demonstrating A\textsubscript{V} and initial densities respectively.}
+        \label{C2-34}
+    \end{figure*}
 
-   %%%%%---------------Table 6------------------------------
-
-  \begin{table*}[htbp]
-  \centering
-  \begin{tabular}{ccccc}
-  \hline\hline
-  \multirow{2}{*}{Principal Components} & \multicolumn{4}{c}{Physical Parameters}  \\ \cline{2-5} 
-                                      & \begin{tabular}[c]{@{}c@{}}maximum \\ temperture\end{tabular} & \multicolumn{1}{l}{metallicity} & \multicolumn{1}{l}{A\textsubscript{V}} & \begin{tabular}[c]{@{}c@{}}initial\\ densities\end{tabular} \\ \hline
-PC1 &  & -  & &  \\ \hline
-PC2 & + & & &  \\ \hline
-PC3 &   &   & +   & -   \\ \hline\hline
-  \end{tabular}
-  \caption{Changing trend of physical parameters on top three PCs among Group C2 (CO, HCO$^+$, CS, SiO, HCN, and HNC)}
-  \label{table-6-all}
-  \end{table*}
+%%%%%%%%%%%------------- TAB: cloud model 6 molecules: trend -----------------------------------
+     \begin{table*}[htbp]
+          \centering
+          \begin{tabular}{ccccc}
+          \hline\hline
+          \multirow{2}{*}{Principal Components} & \multicolumn{4}{c}{Physical Parameters}  \\ \cline{2-5} 
+                                              & \begin{tabular}[c]{@{}c@{}}maximum \\ temperture\end{tabular} & \multicolumn{1}{l}{metallicity} & \multicolumn{1}{l}{A\textsubscript{V}} & \begin{tabular}[c]{@{}c@{}}initial\\ densities\end{tabular} \\ \hline
+        PC1 &  & -  & &  \\ \hline
+        PC2 & + & & &  \\ \hline
+        PC3 &   &   & +   & -   \\ \hline\hline
+          \end{tabular}
+          \caption{Changing trend of physical parameters on top three PCs among Group C2 (CO, HCO$^+$, CS, SiO, HCN, and HNC)}
+          \label{table-6-all}
+    \end{table*}
    
-%%%%%%%%%-------------555555555555555555555555555555555555----------------------------------------
+
    
 \subsubsection{Group C3 (CO, HCO$^+$, CS, SiO, and HCN)}
 
@@ -718,132 +735,131 @@ PC3 &   &   & +   & -   \\ \hline\hline
    On the contrary, the initial densities has an decreasing trend on PC3, which can be observed on and Fig. \ref{C3-23-initialdens} and Fig. \ref{C3-34-initialdens}. 
    These trends are listed in Table \ref{table-5-all}. 
    
-   %%%%%%------------   Figure 24------------------------ 
-  \begin{figure}[htbp]
-   \centering
-   \captionsetup{justification=centering}
-   \includegraphics[angle=0,scale = 0.6]{5/explained_variance_ratio.png}
-   \caption{Individual and cumulative explained variance of PCs among Group C3 (CO, HCO$^+$, CS, SiO, and HCN)}
-         \label{Fig-5-variance}
-   \end{figure}
+%%%%%%%%%%%------------ FIG: cloud model 5 molecules: explained variance ratio -------------
+    \begin{figure}[htbp]
+       \centering
+       \captionsetup{justification=centering}
+       \includegraphics[angle=0,scale = 0.6]{5/explained_variance_ratio.png}
+       \caption{Individual and cumulative explained variance of PCs among Group C3 (CO, HCO$^+$, CS, SiO, and HCN)}
+             \label{Fig-5-variance}
+    \end{figure}
    
-%%%%%%%------------- Table 7-----------------
+%%%%%%%%%%%------------ TAB: cloud model 5 molecules: variance -----------------------------
+    \begin{table*}[htbp]
+        \centering
+        \begin{tabular}{ccc}
+        \hline\hline
+        \multicolumn{1}{l}{Principal Components} & \multicolumn{1}{l}{Explained Ratio} & Cumulative Variance \\ \hline
+                PC1 & 0.427  & 0.427\\ 
+                PC2 & 0.265  & 0.692\\
+                PC3 & 0.191  & 0.883\\
+                PC4 & 0.101  & 0.984\\ 
+                PC5 & 0.016  & 1.000\\ \hline\hline
+        \end{tabular}
+        \caption{Table of individual and cumulative explained variance of PCs among Group C3 (CO, HCO$^+$, CS, SiO, and HCN)}
+        \label{table-5-variance}
+    \end{table*}
 
-\begin{table*}[htbp]
-\centering
-\begin{tabular}{ccc}
-\hline\hline
-\multicolumn{1}{l}{Principal Components} & \multicolumn{1}{l}{Explained Ratio} & Cumulative Variance \\ \hline
-        PC1 & 0.427  & 0.427\\ 
-        PC2 & 0.265  & 0.692\\
-        PC3 & 0.191  & 0.883\\
-        PC4 & 0.101  & 0.984\\ 
-        PC5 & 0.016  & 1.000\\ \hline\hline
-\end{tabular}
-\caption{Table of individual and cumulative explained variance of PCs among Group C3 (CO, HCO$^+$, CS, SiO, and HCN)}
-\label{table-5-variance}
-\end{table*}
 
-
-   %%%------------Figure -----
-   \begin{figure}[htbp]
-\centering  
-\subfigure[Plane of PC1 and PC2]{
-\label{Fig-5-loading-12}
-\includegraphics[width=0.5\textwidth]{5/loadingplot_PC1&2.png}}
-\subfigure[Plane of PC2 and PC3]{
-\label{Fig-5-loading-23}
-\includegraphics[width=0.5\textwidth]{5/loadingplot_PC2&3.png}}
-\caption{Loading plots of Group C3 (CO, HCO$^+$, CS, SiO, and HCN)}
-\label{Fig-5-loading}
-\end{figure}
+%%%%%%%%%%%------------- FIG: cloud model 5 molecules loading plots -------------------------
+    \begin{figure}[htbp]
+        \centering  
+        \subfigure[Plane of PC1 and PC2]{
+        \label{Fig-5-loading-12}
+        \includegraphics[width=0.5\textwidth]{5/loadingplot_PC1&2.png}}
+        \subfigure[Plane of PC2 and PC3]{
+        \label{Fig-5-loading-23}
+        \includegraphics[width=0.5\textwidth]{5/loadingplot_PC2&3.png}}
+        \caption{Loading plots of Group C3 (CO, HCO$^+$, CS, SiO, and HCN)}
+        \label{Fig-5-loading}
+    \end{figure}
    
-%%%%%%%%%----------Table 8---------------
-\begin{table*}[htbp]
-\centering
-\begin{tabular}{cccccc}
-\hline\hline
-\multirow{2}{*}{Molecular Species} & \multicolumn{5}{c}{Principal Components}                 \\ \cline{2-6} 
-                                   & 1       & 2       & 3       & 4       & 5 \\ \hline
-CO   & -0.661 & -0.051  & -0.133 & 0.059  & 0.734 \\ \hline
-HCO$^+$ & 0.065  & -0.771 & -0.052 & -0.629  & 0.046 \\ \hline
-CS   & -0.461 & 0.484  & 0.015   & -0.667 & -0.326\\ \hline
-SiO  & -0.186 & -0.130 & 0.971  & 0.058  & -0.005\\ \hline
-HCN  & -0.556 & -0.387 & -0.185 & 0.389  & -0.594\\ \hline\hline
-\end{tabular}
-\caption{Eigenvalues of PCA among Group C3 (CO, HCO$^+$, CS, SiO, and HCN)} 
-\label{table-5-eigen}
-\end{table*}
+%%%%%%%%%%%------------- TAB: cloud model 5 molecules: eigenvalues --------------------------
+    \begin{table*}[htbp]
+        \centering
+        \begin{tabular}{cccccc}
+        \hline\hline
+        \multirow{2}{*}{Molecular Species} & \multicolumn{5}{c}{Principal Components}                 \\ \cline{2-6} 
+                                           & 1       & 2       & 3       & 4       & 5 \\ \hline
+        CO   & -0.661 & -0.051  & -0.133 & 0.059  & 0.734 \\ \hline
+        HCO$^+$ & 0.065  & -0.771 & -0.052 & -0.629  & 0.046 \\ \hline
+        CS   & -0.461 & 0.484  & 0.015   & -0.667 & -0.326\\ \hline
+        SiO  & -0.186 & -0.130 & 0.971  & 0.058  & -0.005\\ \hline
+        HCN  & -0.556 & -0.387 & -0.185 & 0.389  & -0.594\\ \hline\hline
+        \end{tabular}
+        \caption{Eigenvalues of PCA among Group C3 (CO, HCO$^+$, CS, SiO, and HCN)} 
+        \label{table-5-eigen}
+    \end{table*}
 
- %%%%------------------------------------------
-\begin{figure*}[htbp]
-\centering
-\subfigure{
-\label{C3-12-maxtemp}
-\includegraphics[width=5.9cm]{5/PC1&2_maxTemp.png}
-}
-\subfigure{
-\label{C3-12-metallicity}
-\includegraphics[width=5.9cm]{5/PC1&2_metallicity.png}
-}
-\caption{Projection of Group C3 (CO, HCO$^+$, CS, SiO, and HCN) on the plane of PC1 and PC2. The first panel is the maximum temperature, while the second panel demonstrates the metallicity.}
-\label{C3-12}
-\end{figure*}
+%%%%%%%%%%%------------- FIG: cloud model 5 molecules: Projection_PC1&2 ------------------------
+    \begin{figure*}[htbp]
+        \centering
+        \subfigure[]{
+        \label{C3-12-maxtemp}
+        \includegraphics[scale = 0.27]{5/PC1&2_maxTemp.png}
+        }
+        \subfigure[]{
+        \label{C3-12-metallicity}
+        \includegraphics[scale = 0.27]{5/PC1&2_metallicity.png}
+        }
+        \caption{Projection of Group C3 (CO, HCO$^+$, CS, SiO, and HCN) on the plane of PC1 and PC2. The first panel is the maximum temperature, while the second panel demonstrates the metallicity.}
+        \label{C3-12}
+    \end{figure*} 
 
- %%%%-------------------------------------------
-\begin{figure*}[htbp]
-\centering
-\subfigure{
-\label{C3-23-maxtemp}
-\includegraphics[width=5.9cm]{5/PC2&3_maxTemp.png}
-} 
-\subfigure{
-\label{C3-23-metallicity}
-\includegraphics[width=5.9cm]{5/PC2&3_metallicity.png}
-}
-\\
-\subfigure{
-\label{C3-23-av}
-\includegraphics[width=5.9cm]{5/PC2&3_av.png}
-}
-\subfigure{
-\label{C3-23-initialdens}
-\includegraphics[width=5.9cm]{5/PC2&3_initialDens.png}
-}
-\caption{Projection of Group C3 (CO, HCO$^+$, CS, SiO, and HCN) on the plane of PC2 and PC3. The top row: max temperature and metallicity. The bottom row: A\textsubscript{V} and initial densities.}
-\label{C3-23}
-\end{figure*}
+%%%%%%%%%%%------------- FIG: cloud model 5 molecules: Projection_PC2&3 ----------------------
+    \begin{figure*}[htbp]
+        \centering
+        \subfigure[]{
+        \label{C3-23-maxtemp}
+        \includegraphics[scale = 0.27]{5/PC2&3_maxTemp.png}
+        } 
+        \subfigure[]{
+        \label{C3-23-metallicity}
+        \includegraphics[scale = 0.27]{5/PC2&3_metallicity.png}
+        }
+        \vspace{-8mm}
+        \\
+        \subfigure[]{
+        \label{C3-23-av}
+        \includegraphics[scale = 0.27]{5/PC2&3_av.png}
+        }
+        \subfigure[]{
+        \label{C3-23-initialdens}
+        \includegraphics[scale = 0.27]{5/PC2&3_initialDens.png}
+        }
+        \caption{Projection of Group C3 (CO, HCO$^+$, CS, SiO, and HCN) on the plane of PC2 and PC3. The top row: max temperature and metallicity. The bottom row: A\textsubscript{V} and initial densities.}
+        \label{C3-23}
+    \end{figure*}
 
- %%%%------------------------------------------
-\begin{figure*}[htbp]
-\centering
-\subfigure{
-\label{C3-34-av}
-\includegraphics[width=5.9cm]{5/PC3&4_av.png}
-}
-\subfigure{
-\label{C3-34-initialdens}
-\includegraphics[width=5.9cm]{5/PC3&4_initialDens.png}
-}
-\caption{Projection of Group C3 (CO, HCO$^+$, CS, SiO, and HCN) on the plane of PC3 and PC4. The first panel is the A\textsubscript{V} and the second panel is the initial densities.}
-\label{C3-34}
-\end{figure*}
+%%%%%%%%%%%------------- FIG: cloud model 5 molecules: Projection_PC3&4 ----------------------
+    \begin{figure*}[htbp]
+        \centering
+        \subfigure[]{
+        \label{C3-34-av}
+        \includegraphics[scale = 0.27]{5/PC3&4_av.png}
+        }
+        \subfigure[]{
+        \label{C3-34-initialdens}
+        \includegraphics[scale = 0.27]{5/PC3&4_initialDens.png}
+        }
+        \caption{Projection of Group C3 (CO, HCO$^+$, CS, SiO, and HCN) on the plane of PC3 and PC4. The first panel is the A\textsubscript{V} and the second panel is the initial densities.}
+        \label{C3-34}
+    \end{figure*}
 
- %%%%%---------------Table 9------------------------------
-
-  \begin{table*}[htbp]
-  \centering
-  \begin{tabular}{ccccc}
-  \hline\hline
-  \multirow{2}{*}{Principal Components} & \multicolumn{4}{c}{Physical Parameters}  \\ \cline{2-5} 
-                                      & \begin{tabular}[c]{@{}c@{}}maximum \\ temperture\end{tabular} & \multicolumn{1}{l}{metallicity} & \multicolumn{1}{l}{A\textsubscript{V}} & \begin{tabular}[c]{@{}c@{}}initial\\ densities\end{tabular} \\ \hline
-PC1 &  & -  & &  \\ \hline
-PC2 & - & & &  \\ \hline
-PC3 &   &   & +   & -   \\ \hline\hline
-  \end{tabular}
-  \caption{Changing trend of physical parameters on top three PCs among Group C3 (CO, HCO$^+$, CS, SiO, and HCN)}
-  \label{table-5-all}
-  \end{table*}
+%%%%%%%%%%%------------- TAB: cloud model 5 molecules: trend -----------------------------------
+    \begin{table*}[htbp]
+          \centering
+          \begin{tabular}{ccccc}
+          \hline\hline
+          \multirow{2}{*}{Principal Components} & \multicolumn{4}{c}{Physical Parameters}  \\ \cline{2-5} 
+                                              & \begin{tabular}[c]{@{}c@{}}maximum \\ temperture\end{tabular} & \multicolumn{1}{l}{metallicity} & \multicolumn{1}{l}{A\textsubscript{V}} & \begin{tabular}[c]{@{}c@{}}initial\\ densities\end{tabular} \\ \hline
+        PC1 &  & -  & &  \\ \hline
+        PC2 & - & & &  \\ \hline
+        PC3 &   &   & +   & -   \\ \hline\hline
+          \end{tabular}
+          \caption{Changing trend of physical parameters on top three PCs among Group C3 (CO, HCO$^+$, CS, SiO, and HCN)}
+          \label{table-5-all}
+    \end{table*}
   
   
 \subsection{Shock models}
@@ -870,113 +886,108 @@ PC3 &   &   & +   & -   \\ \hline\hline
     Fig. \ref{S1-12-velocity} and Fig. \ref{S1-12-temp} reveal that on the PC2, there is a descending trend for velocity and temperature. 
     Table \ref{table-shock-1-3} shows the results in a symbolic way.
 
-%%%%%%------------   Figure ------------------------ 
-  \begin{figure}[htbp]
-   \centering
-   \captionsetup{justification=centering}
-   \includegraphics[angle=0,scale =0.6]{shock-1/explained_variance_ratio.png}
-   \caption{Individual and cumulative explained variance of PCs among Group S1 (SiO, HCO$^+$, CH$_3$OH, H$_2$CS, HNCO, NH$_3$, OCS, and CO)}
-         \label{Fig-shock-1-varianve}
-   \end{figure}
+%%%%%%%%%%%------------- FIG: shock model 8 molecules: variance --------------------------
+    \begin{figure}[htbp]
+       \centering
+       \captionsetup{justification=centering}
+       \includegraphics[angle=0,scale =0.6]{shock-1/explained_variance_ratio.png}
+       \caption{Individual and cumulative explained variance of PCs among Group S1 (SiO, HCO$^+$, CH$_3$OH, H$_2$CS, HNCO, NH$_3$, OCS, and CO)}
+             \label{Fig-shock-1-varianve}
+     \end{figure}
 
-\begin{table*}[htbp]
-\centering
-\begin{tabular}{ccc}
-\hline\hline
-\multicolumn{1}{l}{Principal Components} & \multicolumn{1}{l}{Explained Ratio} & Cumulative Variance \\ \hline
-        PC1 & 0.495  & 0.495\\ 
-        PC2 & 0.181  & 0.676\\
-        PC3 & 0.149  & 0.825\\
-        PC4 & 0.109  & 0.934\\ 
-        PC5 & 0.046  & 0.980\\
-        PC6 & 0.011  & 0.991\\
-        PC7 & 0.006  & 0.997\\
-        PC8 & 0.003  & 1.000\\\hline\hline
-\end{tabular}
-\caption{Table of individual and cumulative explained variance of PCs among Group S1 (SiO, HCO$^+$, CH$_3$OH, H$_2$CS, HNCO, NH$_3$, OCS, and CO)}
-\label{table-shock-1-1}
-\end{table*}
+%%%%%%%%%%%------------- TAB: shock model 8 molecules: variance --------------------------
+    \begin{table*}[htbp]
+        \centering
+        \begin{tabular}{ccc}
+        \hline\hline
+        \multicolumn{1}{l}{Principal Components} & \multicolumn{1}{l}{Explained Ratio} & Cumulative Variance \\ \hline
+                PC1 & 0.495  & 0.495\\ 
+                PC2 & 0.181  & 0.676\\
+                PC3 & 0.149  & 0.825\\
+                PC4 & 0.109  & 0.934\\ 
+                PC5 & 0.046  & 0.980\\
+                PC6 & 0.011  & 0.991\\
+                PC7 & 0.006  & 0.997\\
+                PC8 & 0.003  & 1.000\\\hline\hline
+        \end{tabular}
+        \caption{Table of individual and cumulative explained variance of PCs among Group S1 (SiO, HCO$^+$, CH$_3$OH, H$_2$CS, HNCO, NH$_3$, OCS, and CO)}
+        \label{table-shock-1-1}
+    \end{table*}
 
+
+%%%%%%%%%%%------------- FIG: shock model 8 molecules: loading plots ----------------------------
+    \begin{figure}[htbp]
+        \centering  
+        \subfigure[Plane of PC1 and PC2]{
+        \label{Fig-shock-1-loading-12}
+        \includegraphics[width=0.5\textwidth]{shock-1/loadingplot_PC1&2.png}}
+        \subfigure[Plane of PC2 and PC3]{
+        \label{Fig-shock-1-loading-23}
+        \includegraphics[width=0.5\textwidth]{shock-1/loadingplot_PC2&3.png}}
+        \caption{Loading plots of Group S1 (SiO, HCO$^+$, CH$_3$OH, H$_2$CS, HNCO, NH$_3$, OCS, and CO)}
+        \label{Fig-shock-1-loading}
+    \end{figure}
+
+
+%%%%%%%%%%%------------- TAB: shock model 8 molecules: eigenvalues ------------------------------
+    \begin{table*}[htbp]
+        \centering
+        \begin{tabular}{ccccccccc}
+        \hline\hline
+        \multirow{2}{*}{Molecular Species} & \multicolumn{6}{c}{Principal Components}                 \\ \cline{2-9} 
+                                           & 1       & 2       & 3       & 4       & 5      & 6      &7   &8 \\ \hline
+        SIO   & 0.375  & 0.43   & -0.301 & 0.105  & 0.362  & 0.053  & 0.05   & -0.661  \\ \hline
+        HCO$^+$   & 0.388  & 0.425  & -0.167 & 0.302  & -0.092 & -0.486 & -0.199 & 0.516  \\ \hline
+        CH$_3$OH & -0.358 & 0.385  & -0.083 & -0.518 & -0.201 & -0.131 & -0.603 & -0.163 \\ \hline
+        H$_2$CS  & -0.411 & -0.003 & -0.222 & 0.381  & 0.593  & 0.285  & -0.38  & 0.245 \\ \hline
+        HNCO  & -0.469 & -0.143 & -0.057 & 0.193  & 0.145  & -0.761 & 0.219  & -0.268 \\ \hline
+        NH$_3$   & -0.137 & -0.146 & -0.808 & 0.157  & -0.496 & 0.158  & 0.103  & -0.031 \\ \hline
+        OCS   & -0.336 & 0.574  & -0.057 & -0.225 & 0.104  & 0.144  & 0.624  & 0.288  \\ \hline
+        CO    & 0.244  & -0.34  & -0.407 & -0.61  & 0.437  & -0.196 & 0.051  & 0.234 \\ \hline\hline
+        \end{tabular}
+        \caption{Eigenvalues of PCA among Group S1 (SiO, HCO$^+$, CH$_3$OH, H$_2$CS, HNCO, NH$_3$, OCS, and CO)}
+        \label{table-shock-1-eigen}
+    \end{table*}
+
+
+%%%%%%%%%%%------------- FIG: shock model 8 molecules: Projection_PC1&2 --------------------------
+    \begin{figure*}[htbp]
+        \centering
+        \subfigure{
+        \label{S1-12-density}
+        \includegraphics[scale=0.5]{shock-1/PC1&2_Density.png}
+        } 
+        \subfigure{
+        \label{S1-12-av}
+        \includegraphics[scale=0.5]{shock-1/PC1&2_av.png}
+        }
+        \\
+        \subfigure{
+        \label{S1-12-velocity}
+        \includegraphics[scale=0.5]{shock-1/PC1&2_Velocity.png}
+        }
+        \subfigure{
+        \label{S1-12-temp}
+        \includegraphics[scale=0.5]{shock-1/PC1&2_temp.png}
+        }
+        \caption{Projection of Group S1 (SiO, HCO$^+$, CH$_3$OH, H$_2$CS, HNCO, NH$_3$, OCS, and CO) on the plane of PC1 and PC2. Two panels on the top row: density and A\textsubscript{V}, two panels on the bottom row: velocity and temperature.}
+        \label{S1-12}
+    \end{figure*}
 
    
- %%%%%-------------Figure--------
-\begin{figure}[htbp]
-\centering  
-\subfigure[Plane of PC1 and PC2]{
-\label{Fig-shock-1-loading-12}
-\includegraphics[width=0.5\textwidth]{shock-1/loadingplot_PC1&2.png}}
-\subfigure[Plane of PC2 and PC3]{
-\label{Fig-shock-1-loading-23}
-\includegraphics[width=0.5\textwidth]{shock-1/loadingplot_PC2&3.png}}
-\caption{Loading plots of Group S1 (SiO, HCO$^+$, CH$_3$OH, H$_2$CS, HNCO, NH$_3$, OCS, and CO)}
-\label{Fig-shock-1-loading}
-\end{figure}
-
-
-
-%%%%%%%%%%---------------Table 5 -----------------
-\begin{table*}[htbp]
-\centering
-\begin{tabular}{ccccccccc}
-\hline\hline
-\multirow{2}{*}{Molecular Species} & \multicolumn{6}{c}{Principal Components}                 \\ \cline{2-9} 
-                                   & 1       & 2       & 3       & 4       & 5      & 6      &7   &8 \\ \hline
-SIO   & 0.375  & 0.43   & -0.301 & 0.105  & 0.362  & 0.053  & 0.05   & -0.661  \\ \hline
-HCO$^+$   & 0.388  & 0.425  & -0.167 & 0.302  & -0.092 & -0.486 & -0.199 & 0.516  \\ \hline
-CH$_3$OH & -0.358 & 0.385  & -0.083 & -0.518 & -0.201 & -0.131 & -0.603 & -0.163 \\ \hline
-H$_2$CS  & -0.411 & -0.003 & -0.222 & 0.381  & 0.593  & 0.285  & -0.38  & 0.245 \\ \hline
-HNCO  & -0.469 & -0.143 & -0.057 & 0.193  & 0.145  & -0.761 & 0.219  & -0.268 \\ \hline
-NH$_3$   & -0.137 & -0.146 & -0.808 & 0.157  & -0.496 & 0.158  & 0.103  & -0.031 \\ \hline
-OCS   & -0.336 & 0.574  & -0.057 & -0.225 & 0.104  & 0.144  & 0.624  & 0.288  \\ \hline
-CO    & 0.244  & -0.34  & -0.407 & -0.61  & 0.437  & -0.196 & 0.051  & 0.234 \\ \hline\hline
-\end{tabular}
-\caption{Eigenvalues of PCA among Group S1 (SiO, HCO$^+$, CH$_3$OH, H$_2$CS, HNCO, NH$_3$, OCS, and CO)}
-\label{table-shock-1-eigen}
-\end{table*}
-
-
- %%%%-------------------------------------------
-\begin{figure*}[htbp]
-\centering
-\subfigure{
-\label{S1-12-density}
-\includegraphics[scale=0.5]{shock-1/PC1&2_Density.png}
-} 
-\subfigure{
-\label{S1-12-av}
-\includegraphics[scale=0.5]{shock-1/PC1&2_av.png}
-}
-\\
-\subfigure{
-\label{S1-12-velocity}
-\includegraphics[scale=0.5]{shock-1/PC1&2_Velocity.png}
-}
-\subfigure{
-\label{S1-12-temp}
-\includegraphics[scale=0.5]{shock-1/PC1&2_temp.png}
-}
-\caption{Projection of Group S1 (SiO, HCO$^+$, CH$_3$OH, H$_2$CS, HNCO, NH$_3$, OCS, and CO) on the plane of PC1 and PC2. Two panels on the top row: density and A\textsubscript{V}, two panels on the bottom row: velocity and temperature.}
-\label{S1-12}
-\end{figure*}
-
-   
-   
-   
-   
-   %%%%%---------------Table ------------------------------
-
-  \begin{table*}[htbp]
-  \centering
-  \begin{tabular}{ccccc}
-  \hline\hline
- \multirow{2}{*}{Principal Components} & \multicolumn{4}{c}{Physical Parameters}  \\ \cline{2-5} 
-                                      & \begin{tabular}[c]{@{}c@{}}density\end{tabular} & \multicolumn{1}{l}{velocity} & \multicolumn{1}{l}{A\textsubscript{V}} & \begin{tabular}[c]{@{}c@{}}temperature\end{tabular} \\ \hline
-PC1 & - &   & - &  \\ \hline
-PC2 &  & - & & -  \\ \hline\hline
-  \end{tabular}
-  \caption{Changing trend of physical parameters on top three PCs among Group S1 (SiO, HCO$^+$, CH$_3$OH, H$_2$CS, HNCO, NH$_3$, OCS, and CO)}
-  \label{table-shock-1-3}
-  \end{table*}
+%%%%%%%%%%%------------- FIG: shock model 8 molecules: trend -------------------------------------
+    \begin{table*}[htbp]
+      \centering
+      \begin{tabular}{ccccc}
+      \hline\hline
+     \multirow{2}{*}{Principal Components} & \multicolumn{4}{c}{Physical Parameters}  \\ \cline{2-5} 
+                                          & \begin{tabular}[c]{@{}c@{}}density\end{tabular} & \multicolumn{1}{l}{velocity} & \multicolumn{1}{l}{A\textsubscript{V}} & \begin{tabular}[c]{@{}c@{}}temperature\end{tabular} \\ \hline
+    PC1 & - &   & - &  \\ \hline
+    PC2 &  & - & & -  \\ \hline\hline
+      \end{tabular}
+      \caption{Changing trend of physical parameters on top three PCs among Group S1 (SiO, HCO$^+$, CH$_3$OH, H$_2$CS, HNCO, NH$_3$, OCS, and CO)}
+      \label{table-shock-1-3}
+    \end{table*}
 
 
 
@@ -987,33 +998,32 @@ PC2 &  & - & & -  \\ \hline\hline
     This analysis is expected to create a deliberate contrast between Cloud model and C-shock model. 
     Fig.\ref{Fig-shock-2-varianve} and Table \ref{table-shock-2-1} show the explained variance of seven PCs, where the top three PCs occupy over $90\%$ of cumulative explained variance, accounting for PC1: $53.0\%$, PC2: $20.4\%$, and PC3: $18.1\%$ separately. 
  
- %%%%%%------------   Figure ------------------------ 
-  \begin{figure}[htp]
-   \centering
-   \captionsetup{justification=centering}
-   \includegraphics[angle=0,scale =0.6]{shock-2/explained_variance_ratio.png}
-   \caption{Individual and cumulative explained variance of PCs among Group S2 (CO, HCO$^+$, CS, SiO, HCN, NH$_3$, and HNC)}
-\label{Fig-shock-2-varianve}
-   \end{figure}
+%%%%%%%%%%%------------- FIG: shock model 7 molecules: variance --------------------------
+    \begin{figure}[htp]
+       \centering
+       \captionsetup{justification=centering}
+       \includegraphics[angle=0,scale =0.6]{shock-2/explained_variance_ratio.png}
+       \caption{Individual and cumulative explained variance of PCs among Group S2 (CO, HCO$^+$, CS, SiO, HCN, NH$_3$, and HNC)}
+        \label{Fig-shock-2-varianve}
+    \end{figure}
    
-%%--------------    Table  ----------------------
-
-\begin{table*}[htp]
-\centering
-\begin{tabular}{ccc}
-\hline\hline
-\multicolumn{1}{l}{Principal Components} & \multicolumn{1}{l}{Explained Ratio} & Cumulative Variance \\ \hline
-        PC1 & 0.530  & 0.530\\ 
-        PC2 & 0.204  & 0.734\\
-        PC3 & 0.181  & 0.915\\
-        PC4 & 0.047  & 0.962\\ 
-        PC5 & 0.017  & 0.979\\
-        PC6 & 0.014  & 0.993\\
-        PC7 & 0.007  & 1.000\\\hline\hline
-\end{tabular}
-\caption{Table of individual and cumulative explained variance of PCs among Group S2 (CO, HCO$^+$, CS, SiO, HCN, NH$_3$, and HNC)}
-\label{table-shock-2-1}
-\end{table*}
+%%%%%%%%%%%------------- TAB: shock model 7 molecules: variance --------------------------
+    \begin{table*}[htp]
+        \centering
+        \begin{tabular}{ccc}
+        \hline\hline
+        \multicolumn{1}{l}{Principal Components} & \multicolumn{1}{l}{Explained Ratio} & Cumulative Variance \\ \hline
+                PC1 & 0.530  & 0.530\\ 
+                PC2 & 0.204  & 0.734\\
+                PC3 & 0.181  & 0.915\\
+                PC4 & 0.047  & 0.962\\ 
+                PC5 & 0.017  & 0.979\\
+                PC6 & 0.014  & 0.993\\
+                PC7 & 0.007  & 1.000\\\hline\hline
+        \end{tabular}
+        \caption{Table of individual and cumulative explained variance of PCs among Group S2 (CO, HCO$^+$, CS, SiO, HCN, NH$_3$, and HNC)}
+        \label{table-shock-2-1}
+    \end{table*}
 
     Fig.\ref{Fig-shock-2-loading-12} and Fig.\ref{Fig-shock-2-loading-23} and Table \ref{table-shock-2-eigen} exhibit the eigenvalues of seven molecules on every PCs. 
     On PC1, the contribution of NH$_3$ is almost negligible, with eigenvalue only 0.04, but the most significant on PC3, where the eigenvalue is -0.809. 
@@ -1021,83 +1031,81 @@ PC2 &  & - & & -  \\ \hline\hline
     Same as the correlation between HCN and HNC.
 
 
- %%%%-----------
- 
-\begin{figure}[htp]
-\centering  
-\subfigure[Plane of PC1 and PC2]{
-\label{Fig-shock-2-loading-12}
-\includegraphics[width=0.5\textwidth]{shock-2/loadingplot_PC1&2.png}}
-\subfigure[Plane of PC2 and PC3]{
-\label{Fig-shock-2-loading-23}
-\includegraphics[width=0.5\textwidth]{shock-2/loadingplot_PC2&3.png}}
-\caption{Loading plots of Group S2 (CO, HCO$^+$, CS, SiO, HCN, NH$_3$, and HNC)}
-\label{Fig-shock-2-loading}
-\end{figure}
+%%%%%%%%%%%------------- FIG: shock model 7 molecules: loading plots ----------------------------
+    \begin{figure}[htp]
+        \centering  
+        \subfigure[Plane of PC1 and PC2]{
+        \label{Fig-shock-2-loading-12}
+        \includegraphics[width=0.5\textwidth]{shock-2/loadingplot_PC1&2.png}}
+        \subfigure[Plane of PC2 and PC3]{
+        \label{Fig-shock-2-loading-23}
+        \includegraphics[width=0.5\textwidth]{shock-2/loadingplot_PC2&3.png}}
+        \caption{Loading plots of Group S2 (CO, HCO$^+$, CS, SiO, HCN, NH$_3$, and HNC)}
+        \label{Fig-shock-2-loading}
+    \end{figure}
 
 
-%%------------------TABLE-------------------------------
-\begin{table*}[htp]
-\centering
-\begin{tabular}{cccccccc}
-\hline\hline
-\multirow{2}{*}{Molecular Species} & \multicolumn{7}{c}{Principal Components}                 \\ \cline{2-8} 
-                                   & 1       & 2       & 3       & 4       & 5      & 6    & 7\\ \hline
-CO   & -0.293  & -0.613 & -0.052 & -0.634 & -0.138 & -0.103 & 0.319 \\ \hline
-HCO+ & -0.424 & 0.423  & -0.117 & 0.139   & -0.515 & 0.237   & 0.534  \\ \hline
-CS   & -0.468 & 0.226  & -0.153 & -0.007 & 0.783  & -0.173 & 0.248  \\ \hline
-SIO  & -0.452  & 0.312   & -0.163 & -0.340 & -0.224 & -0.202 & -0.681 \\ \hline
-HCN  & 0.355  & 0.230  & -0.526  & -0.462 & 0.157  & 0.552   & 0.011  \\ \hline
-NH3  & 0.041  & -0.26 & -0.809 & 0.382  & -0.124 & -0.331 & -0.007  \\ \hline
-HNC  & 0.425  & 0.413  & 0.022  & -0.319 & -0.104 & -0.669 & 0.294  \\ \hline\hline
-\end{tabular}
-\caption{Eigenvalues of PCA among Group S2 (CO, HCO$^+$, CS, SiO, HCN, NH$_3$, and HNC)}
-\label{table-shock-2-eigen}
-\end{table*}
+%%%%%%%%%%%------------- TAB: shock model 7 molecules: eigenvalues ------------------------------
+    \begin{table*}[htp]
+        \centering
+        \begin{tabular}{cccccccc}
+        \hline\hline
+        \multirow{2}{*}{Molecular Species} & \multicolumn{7}{c}{Principal Components}                 \\ \cline{2-8} 
+                                           & 1       & 2       & 3       & 4       & 5      & 6    & 7\\ \hline
+        CO   & -0.293  & -0.613 & -0.052 & -0.634 & -0.138 & -0.103 & 0.319 \\ \hline
+        HCO+ & -0.424 & 0.423  & -0.117 & 0.139   & -0.515 & 0.237   & 0.534  \\ \hline
+        CS   & -0.468 & 0.226  & -0.153 & -0.007 & 0.783  & -0.173 & 0.248  \\ \hline
+        SIO  & -0.452  & 0.312   & -0.163 & -0.340 & -0.224 & -0.202 & -0.681 \\ \hline
+        HCN  & 0.355  & 0.230  & -0.526  & -0.462 & 0.157  & 0.552   & 0.011  \\ \hline
+        NH3  & 0.041  & -0.26 & -0.809 & 0.382  & -0.124 & -0.331 & -0.007  \\ \hline
+        HNC  & 0.425  & 0.413  & 0.022  & -0.319 & -0.104 & -0.669 & 0.294  \\ \hline\hline
+        \end{tabular}
+        \caption{Eigenvalues of PCA among Group S2 (CO, HCO$^+$, CS, SiO, HCN, NH$_3$, and HNC)}
+        \label{table-shock-2-eigen}
+    \end{table*}
 
     Figures of projection demonstrate that on PC1, the physical parameter density and A\textsubscript{V} both have an increasing trend, as shown in Fig.\ref{S2-12-density} and Fig.\ref{S2-12-av}. 
     On the PC2, however, velocity and temperature show a decreasing trend, as demonstrated in Fig.\ref{S2-12-velocity} and Fig.\ref{S2-12-temp}. 
     A symbolic record is presented in Table \ref{table-shock-2-3}. 
 
- %%%%-------------------------------------------
-\begin{figure*}[htbp]
-\centering
-\subfigure{
-\label{S2-12-density}
-\includegraphics[scale=0.5]{shock-2/PC1&2_Density.png}
-} 
-\subfigure{
-\label{S2-12-av}
-\includegraphics[scale=0.5]{shock-2/PC1&2_av.png}
-}
-\\
-\subfigure{
-\label{S2-12-velocity}
-\includegraphics[scale=0.5]{shock-2/PC1&2_Velocity.png}
-}
-\subfigure{
-\label{S2-12-temp}
-\includegraphics[scale=0.5]{shock-2/PC1&2_temp.png}
-}
-\caption{Projection of Group S2 (CO, HCO$^+$, CS, SiO, HCN, NH$_3$, and HNC) on the plane of PC1 and PC2. Two panels on the top row: density and A\textsubscript{V}, two panels on the bottom row: velocity and temperature.}
-\label{S2-12}
-\end{figure*}
+%%%%%%%%%%%------------- FIG: shock model 7 molecules: Projection_PC1&2 --------------------------
+    \begin{figure*}[htbp]
+        \centering
+        \subfigure{
+        \label{S2-12-density}
+        \includegraphics[scale=0.5]{shock-2/PC1&2_Density.png}
+        } 
+        \subfigure{
+        \label{S2-12-av}
+        \includegraphics[scale=0.5]{shock-2/PC1&2_av.png}
+        }
+        \\
+        \subfigure{
+        \label{S2-12-velocity}
+        \includegraphics[scale=0.5]{shock-2/PC1&2_Velocity.png}
+        }
+        \subfigure{
+        \label{S2-12-temp}
+        \includegraphics[scale=0.5]{shock-2/PC1&2_temp.png}
+        }
+        \caption{Projection of Group S2 (CO, HCO$^+$, CS, SiO, HCN, NH$_3$, and HNC) on the plane of PC1 and PC2. Two panels on the top row: density and A\textsubscript{V}, two panels on the bottom row: velocity and temperature.}
+        \label{S2-12}
+    \end{figure*}
 
 
-  %%%%%---------------Table 6------------------------------
-
-  \begin{table*}[htbp]
-  \centering
-  \begin{tabular}{ccccc}
-  \hline\hline
- \multirow{2}{*}{Principal Components} & \multicolumn{4}{c}{Physical Parameters}  \\ \cline{2-5} 
-                                      & \begin{tabular}[c]{@{}c@{}}density\end{tabular} & \multicolumn{1}{l}{velocity} & \multicolumn{1}{l}{A\textsubscript{V}} & \begin{tabular}[c]{@{}c@{}}temperature\end{tabular} \\ \hline
-PC1 & + &   & + &  \\ \hline
-PC2 &  & - & & -  \\ \hline\hline
-  \end{tabular}
-  \caption{Changing trend of physical parameters on top three PCs among Group S2 (CO, HCO$^+$, CS, SiO, HCN, NH$_3$, and HNC)}
-  \label{table-shock-2-3}
-  \end{table*}
+%%%%%%%%%%%------------- FIG: shock model 7 molecules: trend -------------------------------------
+    \begin{table*}[htbp]
+      \centering
+      \begin{tabular}{ccccc}
+      \hline\hline
+     \multirow{2}{*}{Principal Components} & \multicolumn{4}{c}{Physical Parameters}  \\ \cline{2-5} 
+                                          & \begin{tabular}[c]{@{}c@{}}density\end{tabular} & \multicolumn{1}{l}{velocity} & \multicolumn{1}{l}{A\textsubscript{V}} & \begin{tabular}[c]{@{}c@{}}temperature\end{tabular} \\ \hline
+    PC1 & + &   & + &  \\ \hline
+    PC2 &  & - & & -  \\ \hline\hline
+      \end{tabular}
+      \caption{Changing trend of physical parameters on top three PCs among Group S2 (CO, HCO$^+$, CS, SiO, HCN, NH$_3$, and HNC)}
+      \label{table-shock-2-3}
+    \end{table*}
 
 
 
@@ -1106,118 +1114,116 @@ PC2 &  & - & & -  \\ \hline\hline
     In this section, Group S3 (CO, HCO$^+$, CS, SiO, HCN, HNC, HNCO, CH$_3$OH, and N$_2$H$^+$), a combination of all nine molecules in Group S1 and S2, is analysed to obtain a clear trend on selected orientations. 
     Fig.\ref{Fig-shock3-varianve} provides the individual and cumulative explained variance of nine PCs, Table \ref{table-shock-3-1} records it statistically. The first three PCs count for more than $80\%$ of the total variance (PC1: $60.4\%$, PC2: $19.7\%$, and PC3: $8.8\%$). 
 
- %%%%%%------------   Figure ------------------------ 
+%%%%%%%%%%%------------- FIG: shock model 9 molecules: variance --------------------------------
   \begin{figure}[htbp]
-   \centering
-   \captionsetup{justification=centering}
-   \includegraphics[angle=0,scale =0.6]{shock-3/explained_variance_ratio.png}
-   \caption{Individual and cumulative explained variance of PCs among Group S3 (CO, HCO$^+$, CS, SiO, HCN, HNC, HNCO, CH$_3$OH, and N$_2$H$^+$)}
-         \label{Fig-shock3-varianve}
+       \centering
+       \captionsetup{justification=centering}
+       \includegraphics[angle=0,scale =0.6]{shock-3/explained_variance_ratio.png}
+       \caption{Individual and cumulative explained variance of PCs among Group S3 (CO, HCO$^+$, CS, SiO, HCN, HNC, HNCO, CH$_3$OH, and N$_2$H$^+$)}
+        \label{Fig-shock3-varianve}
    \end{figure}
    
-%%--------------    Table  ----------------------
-
-\begin{table*}[htbp]
-\centering
-\begin{tabular}{ccc}
-\hline\hline
-\multicolumn{1}{l}{Principal Components} & \multicolumn{1}{l}{Explained Ratio} & Cumulative Variance \\ \hline
-        PC1 & 0.604  & 0.603\\ 
-        PC2 & 0.197  & 0.800\\
-        PC3 & 0.088  & 0.888\\
-        PC4 & 0.060  & 0.948\\ 
-        PC5 & 0.019  & 0.967\\
-        PC6 & 0.016  & 0.983\\
-        PC7 & 0.011  & 0.994\\
-        PC8 & 0.003  & 0.997\\
-        PC9 & 0.002  & 0.999\\\hline\hline
-\end{tabular}
-\caption{Table of individual and cumulative explained variance of PCs among Group S3 (CO, HCO$^+$, CS, SiO, HCN, HNC, HNCO, CH$_3$OH, and N$_2$H$^+$)}
-\label{table-shock-3-1}
-\end{table*}
+%%%%%%%%%%%------------- TAB: shock model 9 molecules: variance ---------------------------------
+    \begin{table*}[htbp]
+        \centering
+        \begin{tabular}{ccc}
+        \hline\hline
+        \multicolumn{1}{l}{Principal Components} & \multicolumn{1}{l}{Explained Ratio} & Cumulative Variance \\ \hline
+                PC1 & 0.604  & 0.603\\ 
+                PC2 & 0.197  & 0.800\\
+                PC3 & 0.088  & 0.888\\
+                PC4 & 0.060  & 0.948\\ 
+                PC5 & 0.019  & 0.967\\
+                PC6 & 0.016  & 0.983\\
+                PC7 & 0.011  & 0.994\\
+                PC8 & 0.003  & 0.997\\
+                PC9 & 0.002  & 0.999\\\hline\hline
+        \end{tabular}
+        \caption{Table of individual and cumulative explained variance of PCs among Group S3 (CO, HCO$^+$, CS, SiO, HCN, HNC, HNCO, CH$_3$OH, and N$_2$H$^+$)}
+        \label{table-shock-3-1}
+    \end{table*}
 
     Fig. \ref{Fig-shock-3-loading-12}, Fig. \ref{Fig-shock-3-loading-23} and Table \ref{table-shock-3-eigen} record eigenvalues of nine molecules on each of PCs. CO, HCO$^+$, CS, SiO, and N$_2$H$^+$ have positive performance on the PC1. 
     On the plane of PC1 and PC2, Fig. \ref{Fig-shock-3-loading-12} shows that HCN and HNC are positively correlated, same for HCO$^+$, SiO, CS, and N$_2$H$^+$. Similarly, this correlation is also appearing in the Group S2. 
     For PC2 and PC3, CO is the most significant molecule, having eigenvalue of 0.511 and -0.507 respectively. 
 
-%%%%%%%%%%5---------------FIGUre----------
- \begin{figure}[htbp]
-\centering  
-\subfigure[Plane of PC1 and PC2]{
-\label{Fig-shock-3-loading-12}
-\includegraphics[width=0.5\textwidth]{shock-3/loadingplot_PC1&2.png}}
-\subfigure[Plane of PC2 and PC3]{
-\label{Fig-shock-3-loading-23}
-\includegraphics[width=0.5\textwidth]{shock-3/loadingplot_PC2&3.png}}
-\caption{Loading plots of Group S3 (CO, HCO$^+$, CS, SiO, HCN, HNC, HNCO, CH$_3$OH, and N$_2$H$^+$)}
-\label{Fig-shock-3-loading}
-\end{figure}
+%%%%%%%%%%%------------- FIG: shock model 9 molecules: Projection_PC1&2 --------------------------
+     \begin{figure}[htbp]
+        \centering  
+        \subfigure[Plane of PC1 and PC2]{
+        \label{Fig-shock-3-loading-12}
+        \includegraphics[width=0.5\textwidth]{shock-3/loadingplot_PC1&2.png}}
+        \subfigure[Plane of PC2 and PC3]{
+        \label{Fig-shock-3-loading-23}
+        \includegraphics[width=0.5\textwidth]{shock-3/loadingplot_PC2&3.png}}
+        \caption{Loading plots of Group S3 (CO, HCO$^+$, CS, SiO, HCN, HNC, HNCO, CH$_3$OH, and N$_2$H$^+$)}
+        \label{Fig-shock-3-loading}
+    \end{figure}
 
 
-
-%%------------------TABLE-------------------------------
-\begin{table*}[htbp]
-\centering
-\begin{tabular}{cccccccccc}
-\hline\hline
-\multirow{2}{*}{Molecular Species} & \multicolumn{9}{c}{Principal Components}                 \\ \cline{2-10} 
-                                   & 1       & 2       & 3       & 4       & 5      & 6    & 7       & 8      & 9   \\ \hline
-CO    & 0.200  & 0.511  & -0.507 & 0.370  & -0.414 & -0.190 & -0.135 & -0.276 & 0.022  \\ \hline
-HCO$^+$     & 0.374  & -0.342 & 0.043  & -0.027  & 0.081   & -0.280 & -0.300    & -0.314 & -0.682  \\ \hline
-CS    & 0.389  & -0.153 & -0.015 & 0.268  & 0.141  & 0.757  & 0.071  & -0.371 & 0.123 \\ \hline
-SIO   & 0.380  & -0.264 & -0.206  & 0.113  & -0.388 & 0.137   & 0.176  & 0.704  & -0.180 \\ \hline
-HCN   & -0.287 & -0.393 & -0.255 & 0.580  & 0.244  & -0.275 & 0.463  & -0.093 & -0.018 \\ \hline
-HNC   & -0.329 & -0.385 & 0.220  & -0.034 & -0.760 & 0.082  & 0.019  & -0.325 & 0.045 \\ \hline
-HNCO  & -0.389 & -0.109 & -0.063 & 0.404  & 0.079  & 0.222  & -0.737 & 0.256  & -0.054 \\ \hline
-CH$_3$OH & -0.248 & -0.190 & -0.751 & -0.517 & 0.069  & 0.213  & -0.015 & -0.097 & -0.095 \\ \hline
-N$_2$H$^+$  & 0.343  & -0.419 & -0.122 & -0.079 & 0.038  & -0.338 & -0.310 & -0.025 & 0.686 \\ \hline\hline
-\end{tabular}
-\caption{Eigenvalues of PCA among Group S3 (CO, HCO$^+$, CS, SiO, HCN, HNC, HNCO, CH$_3$OH, and N$_2$H$^+$)}
-\label{table-shock-3-eigen}
-\end{table*}
+%%%%%%%%%%%------------- TAB: shock model 9 molecules: eigenvalues ------------------------------
+    \begin{table*}[htbp]
+        \centering
+        \begin{tabular}{cccccccccc}
+        \hline\hline
+        \multirow{2}{*}{Molecular Species} & \multicolumn{9}{c}{Principal Components}                 \\ \cline{2-10} 
+                                           & 1       & 2       & 3       & 4       & 5      & 6    & 7       & 8      & 9   \\ \hline
+        CO    & 0.200  & 0.511  & -0.507 & 0.370  & -0.414 & -0.190 & -0.135 & -0.276 & 0.022  \\ \hline
+        HCO$^+$     & 0.374  & -0.342 & 0.043  & -0.027  & 0.081   & -0.280 & -0.300    & -0.314 & -0.682  \\ \hline
+        CS    & 0.389  & -0.153 & -0.015 & 0.268  & 0.141  & 0.757  & 0.071  & -0.371 & 0.123 \\ \hline
+        SIO   & 0.380  & -0.264 & -0.206  & 0.113  & -0.388 & 0.137   & 0.176  & 0.704  & -0.180 \\ \hline
+        HCN   & -0.287 & -0.393 & -0.255 & 0.580  & 0.244  & -0.275 & 0.463  & -0.093 & -0.018 \\ \hline
+        HNC   & -0.329 & -0.385 & 0.220  & -0.034 & -0.760 & 0.082  & 0.019  & -0.325 & 0.045 \\ \hline
+        HNCO  & -0.389 & -0.109 & -0.063 & 0.404  & 0.079  & 0.222  & -0.737 & 0.256  & -0.054 \\ \hline
+        CH$_3$OH & -0.248 & -0.190 & -0.751 & -0.517 & 0.069  & 0.213  & -0.015 & -0.097 & -0.095 \\ \hline
+        N$_2$H$^+$  & 0.343  & -0.419 & -0.122 & -0.079 & 0.038  & -0.338 & -0.310 & -0.025 & 0.686 \\ \hline\hline
+        \end{tabular}
+        \caption{Eigenvalues of PCA among Group S3 (CO, HCO$^+$, CS, SiO, HCN, HNC, HNCO, CH$_3$OH, and N$_2$H$^+$)}
+        \label{table-shock-3-eigen}
+    \end{table*}
 
 
     As the plot of projection shown in Fig.\ref{S3-12-density} and Fig.\ref{S3-12-av}, the physical parameter density and A\textsubscript{V} have a declining trend in the direction of PC1. 
     Conversely, Fig.\ref{S3-12-velocity} and Fig.\ref{S3-12-temp} indicate that velocity and temperature have an increasing trend on PC2. 
     Table \ref{table-shock-3-3} shows these trend symbolically. 
 
-%%%%%%---------------
-\begin{figure*}[htbp]
-\centering
-\subfigure{
-\label{S3-12-density}
-\includegraphics[scale=0.5]{shock-3/PC1&2_density.png}
-} 
-\subfigure{
-\label{S3-12-av}
-\includegraphics[scale=0.5]{shock-3/PC1&2_av.png}
-}
-\\
-\subfigure{
-\label{S3-12-velocity}
-\includegraphics[scale=0.5]{shock-3/PC1&2_vel.png}
-}
-\subfigure{
-\label{S3-12-temp}
-\includegraphics[scale=0.5]{shock-3/PC1&2_temp.png}
-}
-\caption{Projection of Group S3 (CO, HCO$^+$, CS, SiO, HCN, HNC, HNCO, CH$_3$OH, and N$_2$H$^+$) on the plane of PC1 and PC2. Two panels on the top row: density and A\textsubscript{V}, two panels on the bottom row: velocity and temperature.}
-\label{S3-12}
-\end{figure*}
+%%%%%%%%%%%------------- FIG: shock model 9 molecules: Projection_PC1&2 --------------------------
+    \begin{figure*}[htbp]
+        \centering
+        \subfigure{
+        \label{S3-12-density}
+        \includegraphics[scale=0.5]{shock-3/PC1&2_density.png}
+        } 
+        \subfigure{
+        \label{S3-12-av}
+        \includegraphics[scale=0.5]{shock-3/PC1&2_av.png}
+        }
+        \\
+        \subfigure{
+        \label{S3-12-velocity}
+        \includegraphics[scale=0.5]{shock-3/PC1&2_vel.png}
+        }
+        \subfigure{
+        \label{S3-12-temp}
+        \includegraphics[scale=0.5]{shock-3/PC1&2_temp.png}
+        }
+        \caption{Projection of Group S3 (CO, HCO$^+$, CS, SiO, HCN, HNC, HNCO, CH$_3$OH, and N$_2$H$^+$) on the plane of PC1 and PC2. Two panels on the top row: density and A\textsubscript{V}, two panels on the bottom row: velocity and temperature.}
+        \label{S3-12}
+    \end{figure*}
 
-  %%%%%---------------Table-----------------------------
 
+%%%%%%%%%%%------------- FIG: shock model 9 molecules: trend -------------------------------------
   \begin{table*}[htp]
-  \centering
-  \begin{tabular}{ccccc}
-  \hline\hline
- \multirow{2}{*}{Principal Components} & \multicolumn{4}{c}{Physical Parameters}  \\ \cline{2-5} 
-                                      & \begin{tabular}[c]{@{}c@{}}density\end{tabular} & \multicolumn{1}{l}{velocity} & \multicolumn{1}{l}{A\textsubscript{V}} & \begin{tabular}[c]{@{}c@{}}temperature\end{tabular} \\ \hline
-PC1 & - &   & - &  \\ \hline
-PC2 &  & + & & +  \\ \hline\hline
-  \end{tabular}
-  \caption{Changing trend of physical parameters on top three PCs among Group S3 (CO, HCO$^+$, CS, SiO, HCN, HNC, HNCO, CH$_3$OH, and N$_2$H$^+$)}
-  \label{table-shock-3-3}
+      \centering
+      \begin{tabular}{ccccc}
+      \hline\hline
+     \multirow{2}{*}{Principal Components} & \multicolumn{4}{c}{Physical Parameters}  \\ \cline{2-5} 
+                                          & \begin{tabular}[c]{@{}c@{}}density\end{tabular} & \multicolumn{1}{l}{velocity} & \multicolumn{1}{l}{A\textsubscript{V}} & \begin{tabular}[c]{@{}c@{}}temperature\end{tabular} \\ \hline
+    PC1 & - &   & - &  \\ \hline
+    PC2 &  & + & & +  \\ \hline\hline
+      \end{tabular}
+      \caption{Changing trend of physical parameters on top three PCs among Group S3 (CO, HCO$^+$, CS, SiO, HCN, HNC, HNCO, CH$_3$OH, and N$_2$H$^+$)}
+      \label{table-shock-3-3}
   \end{table*}
 
 
